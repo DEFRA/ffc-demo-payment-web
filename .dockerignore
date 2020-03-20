@@ -1,0 +1,16 @@
+node_modules/
+test-output/
+.dockerignore
+auth
+test-output
+
+helm
+scripts
+test-output
+docker-compose*
+Jenkinsfile
+License
+README.md
+app/static/stylesheets/*.css*
+Dockerfile
+npm-debug.log
