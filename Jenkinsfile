@@ -74,7 +74,7 @@ node {
           ].join(' ')
 
           defraUtils.deployChart(KUBE_CREDENTIALS_ID, DOCKER_REGISTRY, serviceName, containerTag, extraCommands)
-          echo "Build available for review at https://ffc-demo-$containerTag.$INGRESS_SERVER"
+          echo "Build available for review at https://ffc-payment-$containerTag.$INGRESS_SERVER"
         }
       }
     }
