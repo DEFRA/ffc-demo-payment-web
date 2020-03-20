@@ -13,6 +13,31 @@ def sonarQubeEnv = 'SonarQube'
 def sonarScanner = 'SonarScanner'
 def timeoutInMinutes = 5
 
+def getExtraCommands(pr, containerTag) {
+  withCredentials([
+      string(credentialsId: 'web-alb-tags', variable: 'albTags'),
+      string(credentialsId: 'web-alb-security-groups', variable: 'albSecurityGroups'),
+      string(credentialsId: 'web-alb-arn', variable: 'albArn'),
+      string(credentialsId: 'web-cookie-password', variable: 'cookiePassword')
+    ]) {
+
+    def helmValues = [
+      /container.redeployOnChange="$pr-$BUILD_NUMBER"/,
+      /ingress.alb.tags="$albTags"/,
+      /ingress.alb.arn="$albArn"/,
+      /ingress.alb.securityGroups="$albSecurityGroups"/,
+      /ingress.endpoint="ffc-payment-web-$containerTag"/,
+      /name="ffc-demo-$containerTag"/,
+      /labels.version="$containerTag"/
+    ].join(',')
+
+    return [
+      "--values ./helm/ffc-demo-payment-web/jenkins-aws.yaml",
+      "--set $helmValues"
+    ].join(' ')
+  }
+}
+
 node {
   checkout scm
   try {
@@ -51,31 +76,8 @@ node {
         defraUtils.verifyPackageJsonVersionIncremented()
       }
       stage('Helm install') {
-        withCredentials([
-            string(credentialsId: 'web-alb-tags', variable: 'albTags'),
-            string(credentialsId: 'web-alb-security-groups', variable: 'albSecurityGroups'),
-            string(credentialsId: 'web-alb-arn', variable: 'albArn'),
-            string(credentialsId: 'web-cookie-password', variable: 'cookiePassword')
-          ]) {
-
-          def helmValues = [
-            /container.redeployOnChange="$pr-$BUILD_NUMBER"/,
-            /ingress.alb.tags="$albTags"/,
-            /ingress.alb.arn="$albArn"/,
-            /ingress.alb.securityGroups="$albSecurityGroups"/,
-            /ingress.endpoint="ffc-payment-$containerTag"/,
-            /name="ffc-demo-$containerTag"/,
-            /labels.version="$containerTag"/
-          ].join(',')
-
-          def extraCommands = [
-            "--values ./helm/$serviceName/jenkins-aws.yaml",
-            "--set $helmValues"
-          ].join(' ')
-
-          defraUtils.deployChart(KUBE_CREDENTIALS_ID, DOCKER_REGISTRY, serviceName, containerTag, extraCommands)
-          echo "Build available for review at https://ffc-payment-$containerTag.$INGRESS_SERVER"
-        }
+        defraUtils.deployChart(KUBE_CREDENTIALS_ID, DOCKER_REGISTRY, serviceName, containerTag,  getExtraCommands(pr, containerTag))
+        echo "Build available for review at https://ffc-payment-web-$containerTag.$INGRESS_SERVER"
       }
     }
     if (pr == '') {

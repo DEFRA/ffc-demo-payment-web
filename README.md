@@ -92,6 +92,9 @@ The application is designed to run in containerised environments, using Docker C
 
 Container images are built using Docker Compose, with the same images used to run the service with either Docker Compose or Kubernetes.
 
+When using the Docker Compose files in development the local `app` folder will be mounted on top of the `app` folder within the Docker container, hiding the css files that were generated during the Docker build. 
+For the site to render correctly locally `npm run build` must be run on the host system.
+
 By default, the start script will build (or rebuild) images so there will rarely be a need to build images manually. However, this can be achieved through the Docker Compose [build](https://docs.docker.com/compose/reference/build/) command:
 
 ```
@@ -154,30 +157,11 @@ The service has both an Http readiness probe and an Http liveness probe configur
 Readiness: `/healthy`
 Liveness: `/healthz`
 
-#### Basic Authentication
-
-When deployed with an NGINX Ingress Controller, the ingress may be protected with basic authentication by passing the `--auth` (or `-a`) flag to the [Helm install](./scripts/helm/install) script. This relies on `htpasswd`, which must be available on the host system, and will prompt for a username and password.
-
-```
-# Deploy to the current Helm context with basic auth enabled
-scripts/helm/install --auth
-```
-
-__How basic auth is configured__
-
-Basic authentication is enabled via labels on the ingress object. Those labels are read by the NGINX Ingress Controller and used to configure basic authentication for incoming traffic. One of the labels provides the name of a Kubernetes secret in which credentials are stored as the encoded output of a `htpasswd` command. The ingress controller uses the value of that secret to verify any basic auth attempt.
-
-If it wasn't defined by the Helm chart, the secret could be created via the following command:
-
-```
-# Create basic auth secret for username 'defra'
-kubectl create secret generic ffc-demo-basic-auth2 --from-literal "auth=$(htpasswd -n defra)"
-```
-
 #### Amazon Load Balancer
 
-Settings are available in the Helm charts to use the Amazon Load Balancer Ingress Controller rather than an NGINX Ingress Controller.
-Additional child settings below `ingress` are available allowing the user to set [resource tags](https://kubernetes-sigs.github.io/aws-alb-ingress-controller/guide/ingress/annotation/#tags) and the arn of an [SSL certificate](https://kubernetes-sigs.github.io/aws-alb-ingress-controller/guide/ingress/annotation/#certificate-arn), i.e.
+Settings are available in the Helm charts for the Amazon Load Balancer Ingress Controller.
+
+Child settings below `ingress` allow the user to set [resource tags](https://kubernetes-sigs.github.io/aws-alb-ingress-controller/guide/ingress/annotation/#tags) and the arn of an [SSL certificate](https://kubernetes-sigs.github.io/aws-alb-ingress-controller/guide/ingress/annotation/#certificate-arn), i.e.
 ```
 ingress:
   alb:
@@ -197,20 +181,21 @@ Now the application is ready to run:
 
 ## Build Pipeline
 
-The [azure-pipelines.yaml](azure-pipelines.yaml) performs the following tasks:
+The [Jenkinsfile](Jenkinsfile) performs the following tasks:
 - Runs unit tests
 - Publishes test result
 - Pushes containers to the registry tagged with the PR number or release version
 - Deploys PRs to a temporary end point for review
 - Deletes PR deployments, containers, and namepace upon merge
 
-Builds will be deployed into a namespace with the format `ffc-demo-{identifier}` where `{identifier}` is either the release version, the PR number, or the branch name.
+Builds will be deployed into a namespace with the format `ffc-payment-{identifier}` where `{identifier}` is either the release version, the PR number, or the branch name.
 
-The builds will be available at the URL `http://ffc-demo-{identifier}.{ingress-server}`, where `{ingress-server}` is the ingress server defined the [`values.yaml`](./helm/ffc-demo-payment-web/values.yaml),  which is `vividcloudsolutions.co.uk` by default.
 
-The temporary deployment requires a CNAME subdomain wildcard pointing to the public IP address of the ingress controller of the Kubernetes cluster. This can be simulated by updating your local `hosts` file with an entry for the build address set to the ingress controller's public IP address. On windows this would mean adding a line to `C:\Windows\System32\drivers\etc\hosts`, i.e. for PR 8 against the default ingress server this would be
+The builds will be available at the URL `http://ffc-payment-{identifier}.{ingress-server}`, where `{ingress-server}` is r defined the [`values.yaml`](./helm/ffc-demo-web/values.yaml) at `ingress.server`. This is empty by default and is set during the build pipeline.
 
-xx.xx.xx.xx mine-support-pr8.vividcloudsolutions.co.uk
+The temporary deployment requires a CNAME subdomain wildcard pointing to the public IP address of the ingress controller of the Kubernetes cluster. This can be simulated by updating your local `hosts` file with an entry for the build address set to the ingress controller's public IP address. On windows this would mean adding a line to `C:\Windows\System32\drivers\etc\hosts`, i.e. for PR 8 against the default ingress server this could be
+
+xx.xx.xx.xx ffc-payment-pr8.my-ingress-server.co.uk
 
 where `xx.xx.xx.xx` is the public IP Address of the Ingress Controller.
 
