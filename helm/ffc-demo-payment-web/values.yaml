@@ -3,7 +3,6 @@ image: ffc-demo-payment-web
 name: ffc-demo-payment-web
 namespace: ffc-demo
 workstream: ffc-demo
-auth:
 imagePullSecret:
 labels:
   instance:

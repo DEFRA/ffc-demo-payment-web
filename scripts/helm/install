@@ -13,17 +13,12 @@ Install service to current Kubernetes context.
 Usage: scripts/helm/install [OPTION...]
 
 Options:
-  -a, --auth  enable basic auth with username 'defra' (will prompt for password)
   -h, --help  display this help text
 "
 }
 
 while :; do
   case $1 in
-    -a|--auth)
-      auth="true"
-      ;;
-
     -h|--help)
       show_help
       exit 0
@@ -47,11 +42,6 @@ while :; do
   shift
 done
 
-if [ "${auth}" = "true" ]; then
-  read -p "Username: " username
-  credentials=$(htpasswd -n "${username}" | base64)
-fi
-
 (
   cd "${projectRoot}"
 
@@ -71,7 +61,6 @@ fi
     --install \
     --namespace ${namespace} \
     --values helm/${chartName}/development-values.yaml \
-    --set auth="${credentials}" \
     --wait \
     ${chartName} \
     ./helm

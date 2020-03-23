@@ -1,16 +1,21 @@
-{{- if .Values.ingress.alb }}
+{{- if not .Values.ingress.alb }}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{ quote .Values.name }}
   labels: {{ include "ffc-demo.labels" . | trimSuffix "\n" | indent 2 }}
   annotations:
-    kubernetes.io/ingress.class: alb
-    alb.ingress.kubernetes.io/scheme: internal
-    alb.ingress.kubernetes.io/security-groups: {{ quote .Values.ingress.alb.securityGroups}}
-    alb.ingress.kubernetes.io/certificate-arn: {{ quote .Values.ingress.alb.arn}}
-    alb.ingress.kubernetes.io/tags: {{ quote .Values.ingress.alb.tags }}
-    external-dns.alpha.kubernetes.io/aws-zone-type-private: "true"
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/session-cookie-name: "route"
+    nginx.ingress.kubernetes.io/session-cookie-expires: "172800"
+    nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      proxy_set_header l5d-dst-override {{.Values.name }}.default.svc.cluster.local:{{ .Values.service.port }};
+      proxy_hide_header l5d-remote-ip;
+      proxy_hide_header l5d-server-id;
+  name: {{ quote .Values.name }}
   namespace: {{ quote .Values.namespace }}
 spec:
   rules:
@@ -21,7 +26,7 @@ spec:
   - http:
 {{- end }}
       paths:
-      - path: /*
+      - path: /?(.*)
         backend:
           serviceName: {{ quote .Values.name }}
           servicePort: {{ .Values.service.port }}
