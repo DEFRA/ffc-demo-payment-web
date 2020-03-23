@@ -18,7 +18,6 @@ def getExtraCommands(pr, containerTag) {
       string(credentialsId: 'web-alb-tags', variable: 'albTags'),
       string(credentialsId: 'web-alb-security-groups', variable: 'albSecurityGroups'),
       string(credentialsId: 'web-alb-arn', variable: 'albArn'),
-      string(credentialsId: 'web-cookie-password', variable: 'cookiePassword')
     ]) {
 
     def helmValues = [
