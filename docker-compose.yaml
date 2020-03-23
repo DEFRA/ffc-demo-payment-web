@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  ffc-demo-payment-web:
+    build:
+      context: .
+      target: production
+      args:
+        REGISTRY: ${DOCKER_REGISTRY}
+    image: ffc-demo-payment-web

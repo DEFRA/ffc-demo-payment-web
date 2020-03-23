@@ -1,0 +1,47 @@
+environment: production
+image: ffc-demo-payment-web
+name: ffc-demo-payment-web
+namespace: ffc-demo
+workstream: ffc-demo
+imagePullSecret:
+labels:
+  instance:
+  version: 1.0.0
+  component: service
+service:
+  port: 80
+  type: ClusterIP
+
+container:
+  priorityClassName: low
+  imagePullPolicy: IfNotPresent
+  redeployOnChange: update this field to force a change
+  requestMemory: 60Mi
+  requestCpu: 60m
+  limitMemory: 80Mi
+  limitCpu: 80m
+  runAsNonRoot: true
+  runAsUser: 1000
+  readOnlyRootFilesystem: true
+  allowPrivilegeEscalation: false
+  restartPolicy: Always
+  staticCacheTimeoutMillis: 54000
+ingress:
+  endPoint: ffc-demo
+  server:
+replicas: 1
+minReadySeconds: 5
+
+readinessProbe:
+  path: /healthy
+  port: 3000
+  initialDelaySeconds: 20
+  periodSeconds: 10
+  failureThreshold: 3
+
+livenessProbe:
+  path: /healthz
+  port: 3000
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  failureThreshold: 3
