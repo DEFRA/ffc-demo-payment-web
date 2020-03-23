@@ -41,19 +41,8 @@ while :; do
 
   shift
 done
-
 (
   cd "${projectRoot}"
-
-  echo "Deploying web redis"
-  helm upgrade \
-    --atomic \
-    --install \
-    --namespace ${namespace} \
-    --values helm/${chartName}/redis-values.yaml \
-    --wait \
-    ${chartName}-redis \
-    stable/redis
 
   echo "Deploying web service"
   helm upgrade \

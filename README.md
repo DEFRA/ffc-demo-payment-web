@@ -1,4 +1,4 @@
-[![Known Vulnerabilities](https://snyk.io//test/github/DEFRA/ffc-demo-payment-web/badge.svg?targetFile=package.json)](https://snyk.io//test/github/DEFRA/ffc-demo-payment-web?targetFile=package.json)
+[![Known Vulnerabilities](https://snyk.io/test/github/DEFRA/ffc-demo-payment-web/badge.svg?targetFile=package.json)](https://snyk.io/test/github/DEFRA/ffc-demo-payment-web?targetFile=package.json)
 
 # FFC Demo Payment Service
 
@@ -18,7 +18,6 @@ Or:
 
 Or:
 - Node 10
-- Redis
 
 ## Environment variables
 
