@@ -34,7 +34,7 @@ def getExtraCommands(pr, containerTag) {
       /okta.domain="$oktaDomain"/,
       /okta.clientId="$oktaClientId"/,
       /okta.clientSecret="$oktaClientSecret"/,
-      /siteUrl="https://ffc-payment-web-$containerTag.$INGRESS_SERVER"/,
+      /siteUrl="https://ffc-payment-web-$containerTag.$INGRESS_SERVER"/
     ].join(',')
 
     return [
