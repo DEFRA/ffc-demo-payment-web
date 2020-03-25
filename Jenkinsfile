@@ -24,6 +24,7 @@ def getExtraCommands(pr, containerTag) {
       string(credentialsId: 'payment-web-okta-client-secret', variable: 'oktaClientSecret')
     ]) {
 
+    def siteUrl =  "https://ffc-payment-web-$containerTag.$INGRESS_SERVER"
     def helmValues = [
       /container.redeployOnChange="$pr-$BUILD_NUMBER"/,
       /ingress.alb.tags="$albTags"/,
@@ -34,7 +35,7 @@ def getExtraCommands(pr, containerTag) {
       /okta.domain="$oktaDomain"/,
       /okta.clientId="$oktaClientId"/,
       /okta.clientSecret="$oktaClientSecret"/,
-      /siteUrl="https://ffc-payment-web-$containerTag.$INGRESS_SERVER"/
+      /siteUrl="$siteUrl"/
     ].join(',')
 
     return [
