@@ -1,4 +1,5 @@
 const Joi = require('@hapi/joi')
+const okta = require('./okta')
 
 // Define config schema
 const schema = Joi.object({
@@ -31,4 +32,6 @@ const value = result.value
 value.isDev = (value.env === 'development' || value.env === 'test')
 value.isTest = value.env === 'test'
 value.isProd = value.env === 'production'
+
+value.okta = okta
 module.exports = value

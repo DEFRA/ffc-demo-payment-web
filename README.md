@@ -21,13 +21,19 @@ Or:
 
 ## Environment variables
 
-The following environment variables are required by the application container. Values for development are set in the Docker Compose configuration. Default values for production-like deployments are set in the Helm chart and may be overridden by build and release pipelines.
+The following environment variables are required by the application container. 
+Values for development are set in the Docker Compose configuration. 
+Default values for production-like deployments are set in the Helm chart and may be overridden by build and release pipelines.
 
-| Name                                  | Description                | Required | Default               | Valid                       |
-|---------------------------------------|----------------------------|:--------:|-----------------------|-----------------------------|
-| NODE_ENV                              | Node environment           | no       | development           | development,test,production |
-| PORT                                  | Port number                | no       | 3000                  |                             |
-| STATIC_CACHE_TIMEOUT_IN_MILLIS        | static file cache timeout  | no       | 54000 (15 minutes)    |                             |
+| Name                                  | Description                               | Required | Default               | Valid                       |
+|---------------------------------------|-------------------------------------------|:--------:|-----------------------|-----------------------------|
+| NODE_ENV                              | Node environment                          | no       | development           | development,test,production |
+| PORT                                  | Port number                               | no       | 3000                  |                             |
+| COOKIE_PASSWORD                       | password for session cache                | yes      |                       |                             |
+| OKTA_DOMAIN                           | Okta domain, i.e. `mysite.okta.com`       | yes      |                       |                             |
+| OKTA_CLIENT_ID                        | Client ID of Okta OpenID Connect app      | yes      |                       |                             |
+| OKTA_CLIENT_SECRET                    | Client Secret of Okta OpenID Connect app  | yes      |                       |                             |
+| SITE_URL                              | URL of site, i.e. https://mysite.com      | yes      |                       |                             |
 
 ## Building the project locally
 
@@ -40,6 +46,12 @@ i.e.
 ```
 export DOCKER_REGISTRY=registryid.myprivatedockersite.com
 ```
+
+## Running the project locally
+
+The web site authenticates using [Okta](https://www.okta.com/). 
+A valid Okta OpenID Connect application must be available, and the Okta domain, client ID, Client Secret, and URL of the site must be available in the environment variables
+`OKTA_DOMAIN`, `OKTA_CLIENT_ID`, `OKTA_CLIENT_SECRET`, and `SITE_URL` respectively.
 
 ## How to run tests
 

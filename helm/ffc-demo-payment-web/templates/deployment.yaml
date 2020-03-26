@@ -51,6 +51,16 @@ spec:
           value: "3000"
         - name: STATIC_CACHE_TIMEOUT_IN_MILLIS
           value: {{ quote .Values.container.staticCacheTimeoutMillis }}
+        - name: COOKIE_PASSWORD
+          value: {{ quote .Values.cookiePassword }}
+        - name: OKTA_DOMAIN
+          value: {{ quote .Values.okta.domain }}
+        - name: OKTA_CLIENT_ID
+          value: {{ quote .Values.okta.clientId }}
+        - name: OKTA_CLIENT_SECRET
+          value: {{ quote .Values.okta.clientSecret }}
+        - name: SITE_URL
+          value: {{ quote .Values.siteUrl }}
         ports:
         - name: http
           containerPort: 3000

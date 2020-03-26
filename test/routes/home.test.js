@@ -11,14 +11,14 @@ describe('Home test', () => {
     await server.initialize()
   })
 
-  test('GET / route returns 200', async () => {
+  test('GET / route returns 302', async () => {
     const options = {
       method: 'GET',
       url: '/'
     }
 
     const response = await server.inject(options)
-    expect(response.statusCode).toBe(200)
+    expect(response.statusCode).toBe(302)
   })
 
   afterEach(async () => {

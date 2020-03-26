@@ -2,8 +2,13 @@ module.exports = {
   method: 'GET',
   path: '/',
   options: {
+    auth: {
+      mode: 'required',
+      strategy: 'session'
+    },
     handler: (request, h) => {
-      return h.view('home')
+      const name = request.auth.credentials.profile.firstName
+      return h.view('home', { name })
     }
   }
 }

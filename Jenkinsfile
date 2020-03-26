@@ -18,16 +18,24 @@ def getExtraCommands(pr, containerTag) {
       string(credentialsId: 'web-alb-tags', variable: 'albTags'),
       string(credentialsId: 'web-alb-security-groups', variable: 'albSecurityGroups'),
       string(credentialsId: 'web-alb-arn', variable: 'albArn'),
+      string(credentialsId: 'payment-web-cookie-password', variable: 'cookiePassword'),
+      string(credentialsId: 'payment-web-okta-domain', variable: 'oktaDomain'),
+      string(credentialsId: 'payment-web-okta-client-id', variable: 'oktaClientId'),
+      string(credentialsId: 'payment-web-okta-client-secret', variable: 'oktaClientSecret')
     ]) {
 
+    def siteUrl =  "https://ffc-payment-web-$containerTag.$INGRESS_SERVER"
     def helmValues = [
       /container.redeployOnChange="$pr-$BUILD_NUMBER"/,
       /ingress.alb.tags="$albTags"/,
       /ingress.alb.arn="$albArn"/,
       /ingress.alb.securityGroups="$albSecurityGroups"/,
       /ingress.endpoint="ffc-payment-web-$containerTag"/,
-      /name="ffc-demo-$containerTag"/,
-      /labels.version="$containerTag"/
+      /cookiePassword="$cookiePassword"/,
+      /okta.domain="$oktaDomain"/,
+      /okta.clientId="$oktaClientId"/,
+      /okta.clientSecret="$oktaClientSecret"/,
+      /siteUrl="$siteUrl"/
     ].join(',')
 
     return [

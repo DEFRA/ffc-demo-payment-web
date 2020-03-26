@@ -26,11 +26,20 @@ container:
   allowPrivilegeEscalation: false
   restartPolicy: Always
   staticCacheTimeoutMillis: 54000
+  
 ingress:
   endPoint: ffc-demo
   server:
+
 replicas: 1
 minReadySeconds: 5
+cookiePassword:
+siteUrl:
+
+okta:
+  domain:
+  cientId:
+  clientSecret:
 
 readinessProbe:
   path: /healthy
