@@ -4,10 +4,11 @@ module.exports = {
   options: {
     auth: {
       mode: 'required',
-      strategy: 'okta'
+      strategy: 'session'
     },
     handler: (request, h) => {
-      return h.view('home')
+      const name = request.auth.credentials.profile.firstName
+      return h.view('home', { name })
     }
   }
 }
