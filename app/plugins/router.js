@@ -1,6 +1,9 @@
+
+const { oktaEnabled } = require('../config')
+const authRoute = oktaEnabled ? require('../routes/okta') : require('../routes/dev-login')
+
 const routes = [].concat(
-  require('../routes/okta'),
-  require('../routes/dev-login'),
+  authRoute,
   require('../routes/home'),
   require('../routes/healthy'),
   require('../routes/healthz'),

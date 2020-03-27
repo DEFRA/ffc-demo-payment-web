@@ -4,14 +4,14 @@ const authCookie = require('@hapi/cookie')
 const config = require('../config')
 
 const isSecure = config.isProd
-const redirectTo = config.isProd ? '/auth/okta' : '/auth/dev'
+const redirectTo = config.oktaEnabled ? '/auth/okta' : '/auth/dev'
 
 function registerSessionAuth (server) {
   server.auth.strategy('session', 'cookie', {
     cookie: {
       name: 'ffc-demo-payment-service',
       path: '/',
-      password: config.okta.cookiePassword,
+      password: config.cookiePassword,
       isSecure
     },
     redirectTo
@@ -25,7 +25,7 @@ function registerOktaAuth (server) {
   server.auth.strategy('okta', 'bell', {
     provider: 'okta',
     config: { uri: `https://${config.okta.domain}` },
-    password: config.okta.cookiePassword,
+    password: config.cookiePassword,
     isSecure,
     location: config.okta.url,
     clientId: config.okta.clientId,
@@ -39,7 +39,9 @@ module.exports = {
     register: async (server) => {
       await server.register([authCookie, bell])
       registerSessionAuth(server)
-      registerOktaAuth(server)
+      if (config.oktaEnabled) {
+        registerOktaAuth(server)
+      }
     }
   }
 }
