@@ -4,6 +4,7 @@ const authCookie = require('@hapi/cookie')
 const config = require('../config')
 
 const isSecure = config.isProd
+const redirectTo = config.isProd ? '/auth/okta' : '/auth/dev'
 
 function registerSessionAuth (server) {
   server.auth.strategy('session', 'cookie', {
@@ -13,7 +14,7 @@ function registerSessionAuth (server) {
       password: config.okta.cookiePassword,
       isSecure
     },
-    redirectTo: '/auth/okta'
+    redirectTo
   })
 }
 
