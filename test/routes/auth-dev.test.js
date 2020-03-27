@@ -20,15 +20,6 @@ describe('Home test', () => {
     const authResponse = await server.inject(authUrlOptions)
     expect(authResponse.statusCode).toBe(302)
     expect(authResponse.headers['set-cookie'][0]).toContain('ffc-demo-payment-service=')
-
-    // const homeOptions = {
-    //   method: 'GET',
-    //   url: '/',
-    //   headers: authResponse.headers
-    // }
-
-    // const homeResponse = await server.inject(homeOptions)
-    // expect(homeResponse.statusCode).toBe(200)
   })
 
   afterEach(async () => {

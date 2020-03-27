@@ -2,7 +2,6 @@ const devProfile = {
   username: 'devuser',
   firstName: 'Dev',
   lastName: 'Patel'
-
 }
 
 module.exports = {
