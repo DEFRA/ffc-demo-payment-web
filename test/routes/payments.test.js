@@ -36,7 +36,9 @@ describe('Home test', () => {
 
     const homeResponse = await server.inject(homeOptions)
     expect(homeResponse.statusCode).toBe(200)
-    expect(homeResponse.payload).toContain(`Payments ${testUserProfile.firstName}!`)
+    expect(homeResponse.payload).toContain('MINE123')
+    expect(homeResponse.payload).toContain('01/04/2020')
+    expect(homeResponse.payload).toContain('£32.83')
   })
 
   afterEach(async () => {

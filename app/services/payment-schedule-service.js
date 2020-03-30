@@ -3,36 +3,63 @@ async function getAll () {
     [
       {
         claimId: 'MINE123',
-        paymentDates: [
-          '2020-04-01T14:10:20.331Z',
-          '2020-05-01T14:10:20.331Z',
-          '2020-06-01T14:10:20.331Z',
-          '2020-07-01T14:10:20.331Z',
-          '2020-08-01T14:10:20.331Z',
-          '2020-09-01T14:10:20.331Z'
-        ]
+        paymentDate: '2020-04-01T14:10:20.331Z',
+        amount: 32.83
+      },
+      {
+        claimId: 'MINE123',
+        paymentDate: '2020-05-01T14:10:20.331Z',
+        amount: 32.83
+      },
+      {
+        claimId: 'MINE123',
+        paymentDate: '2020-06-01T14:10:20.331Z',
+        amount: 32.83
+      },
+      {
+        claimId: 'MINE123',
+        paymentDate: '2020-07-01T14:10:20.331Z',
+        amount: 32.83
       },
       {
         claimId: 'MINE124',
-        paymentDates: [
-          '2020-07-01T14:10:20.331Z',
-          '2020-08-01T14:10:20.331Z',
-          '2020-09-01T14:10:20.331Z',
-          '2020-10-01T14:10:20.331Z',
-          '2020-11-01T14:10:20.331Z',
-          '2020-12-01T14:10:20.331Z'
-        ]
+        paymentDate: '2020-07-01T14:10:20.331Z',
+        amount: 42.12
       },
       {
-        claimId: 'MINE125',
-        paymentDates: [
-          '2020-01-01T14:10:20.331Z',
-          '2020-02-01T14:10:20.331Z',
-          '2020-03-01T14:10:20.331Z',
-          '2020-04-01T14:10:20.331Z',
-          '2020-05-01T14:10:20.331Z',
-          '2020-06-01T14:10:20.331Z'
-        ]
+        claimId: 'MINE123',
+        paymentDate: '2020-08-01T14:10:20.331Z',
+        amount: 32.83
+      },
+      {
+        claimId: 'MINE124',
+        paymentDate: '2020-08-01T14:10:20.331Z',
+        amount: 42.12
+      },
+      {
+        claimId: 'MINE123',
+        paymentDate: '2020-09-01T14:10:20.331Z',
+        amount: 32.83
+      },
+      {
+        claimId: 'MINE124',
+        paymentDate: '2020-09-01T14:10:20.331Z',
+        amount: 42.12
+      },
+      {
+        claimId: 'MINE124',
+        paymentDate: '2020-10-01T14:10:20.331Z',
+        amount: 42.12
+      },
+      {
+        claimId: 'MINE124',
+        paymentDate: '2020-08-01T14:10:20.331Z',
+        amount: 42.12
+      },
+      {
+        claimId: 'MINE124',
+        paymentDate: '2020-09-01T14:10:20.331Z',
+        amount: 42.12
       }
     ])
 }

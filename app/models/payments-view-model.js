@@ -4,10 +4,10 @@ function formatDate (date) {
   return moment(date).format('DD/MM/YYYY')
 }
 function toRow (payment) {
-  const payments = payment.paymentDates.map(formatDate).join(', ')
   return [
     { text: payment.claimId },
-    { text: payments }
+    { text: formatDate(payment.paymentDate) },
+    { text: `£${payment.amount}` }
   ]
 }
 
@@ -18,11 +18,15 @@ function createTableDefinition (payments) {
     head: [
       {
         text: 'Claim ID',
-        classes: 'govuk-!-width-one-half'
+        classes: 'govuk-!-width-one-third'
       },
       {
-        text: 'Scheduled Payments',
-        classes: 'govuk-!-width-one-half'
+        text: 'Payment Date',
+        classes: 'govuk-!-width-one-third'
+      },
+      {
+        text: 'Amount',
+        classes: 'govuk-!-width-one-third'
       }
     ],
     rows: payments.map(toRow)
