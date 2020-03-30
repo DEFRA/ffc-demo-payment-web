@@ -14,14 +14,14 @@ describe('Home test', () => {
   test('GET / route redirects for unauthenticated user', async () => {
     const options = {
       method: 'GET',
-      url: '/'
+      url: '/payments'
     }
 
     const response = await server.inject(options)
     expect(response.statusCode).toBe(302)
   })
 
-  test('GET / route displays welcome message for authenticated user', async () => {
+  test('GET / route displays payments authenticated user', async () => {
     const testUserProfile = {
       username: 'testuser',
       firstName: 'Testuser',
@@ -30,13 +30,15 @@ describe('Home test', () => {
 
     const homeOptions = {
       method: 'GET',
-      url: '/',
+      url: '/payments',
       auth: { strategy: 'session', credentials: { profile: testUserProfile } }
     }
 
     const homeResponse = await server.inject(homeOptions)
     expect(homeResponse.statusCode).toBe(200)
-    expect(homeResponse.payload).toContain(`Welcome ${testUserProfile.firstName}`)
+    expect(homeResponse.payload).toContain('MINE123')
+    expect(homeResponse.payload).toContain('01/04/2020')
+    expect(homeResponse.payload).toContain('£32.83')
   })
 
   afterEach(async () => {

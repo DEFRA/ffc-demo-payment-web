@@ -9,8 +9,10 @@ services:
         REGISTRY: ${DOCKER_REGISTRY}
     image: ffc-demo-payment-web
     environment:
+      NODE_ENV: development
+      OKTA_ENABLED: "false"
       COOKIE_PASSWORD: cookiecookiecookiecookiecookiecookiecookiecookiecookie
-      OKTA_DOMAIN: ${OKTA_DOMAIN:-mydomain.otka.com}
-      OKTA_CLIENT_ID: ${OKTA_CLIENT_ID:-placeholder}
-      OKTA_CLIENT_SECRET: ${OKTA_CLIENT_SECRET:-placeholder}
+      OKTA_DOMAIN: ${OKTA_DOMAIN}
+      OKTA_CLIENT_ID: ${OKTA_CLIENT_ID}
+      OKTA_CLIENT_SECRET: ${OKTA_CLIENT_SECRET}
       SITE_URL: http://localhost:3006

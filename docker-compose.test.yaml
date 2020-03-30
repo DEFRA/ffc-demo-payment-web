@@ -12,5 +12,8 @@ services:
     command: npm test
     environment:
       NODE_ENV: test
+      OKTA_DOMAIN: mydomain.otka.com
+      OKTA_CLIENT_ID: placeholderclientid
+      OKTA_CLIENT_SECRET: placeholdersecret
     volumes:
       - ./test-output/:/home/node/test-output/

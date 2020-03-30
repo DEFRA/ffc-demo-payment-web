@@ -25,15 +25,17 @@ The following environment variables are required by the application container.
 Values for development are set in the Docker Compose configuration. 
 Default values for production-like deployments are set in the Helm chart and may be overridden by build and release pipelines.
 
+
 | Name                                  | Description                               | Required | Default               | Valid                       |
 |---------------------------------------|-------------------------------------------|:--------:|-----------------------|-----------------------------|
 | NODE_ENV                              | Node environment                          | no       | development           | development,test,production |
 | PORT                                  | Port number                               | no       | 3000                  |                             |
 | COOKIE_PASSWORD                       | password for session cache                | yes      |                       |                             |
-| OKTA_DOMAIN                           | Okta domain, i.e. `mysite.okta.com`       | yes      |                       |                             |
-| OKTA_CLIENT_ID                        | Client ID of Okta OpenID Connect app      | yes      |                       |                             |
-| OKTA_CLIENT_SECRET                    | Client Secret of Okta OpenID Connect app  | yes      |                       |                             |
-| SITE_URL                              | URL of site, i.e. https://mysite.com      | yes      |                       |                             |
+| OKTA_ENABLED                          | set to true to enable Okta authentication | no       | "true"                |                             |
+| OKTA_DOMAIN                           | Okta domain, i.e. `mysite.okta.com`       | no       |                       |                             |
+| OKTA_CLIENT_ID                        | Client ID of Okta OpenID Connect app      | no       |                       |                             |
+| OKTA_CLIENT_SECRET                    | Client Secret of Okta OpenID Connect app  | no       |                       |                             |
+| SITE_URL                              | URL of site, i.e. https://mysite.com      | no       |                       |                             |
 
 ## Building the project locally
 
@@ -49,8 +51,11 @@ export DOCKER_REGISTRY=registryid.myprivatedockersite.com
 
 ## Running the project locally
 
-The web site authenticates using [Okta](https://www.okta.com/). 
-A valid Okta OpenID Connect application must be available, and the Okta domain, client ID, Client Secret, and URL of the site must be available in the environment variables
+The web site can authenticate using [Okta](https://www.okta.com/), or using stubbed authentication for local development. 
+To use the stubbed authentication set `OKTA_ENABLED` to `"false"`
+
+Okta specific environment variables must be set if `OKTA_ENABLED` is set to `"true"`.
+A valid Okta OpenID Connect application is required, and the Okta domain, client ID, Client Secret, and URL of the site must be set in the environment variables
 `OKTA_DOMAIN`, `OKTA_CLIENT_ID`, `OKTA_CLIENT_SECRET`, and `SITE_URL` respectively.
 
 ## How to run tests
