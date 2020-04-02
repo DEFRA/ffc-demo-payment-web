@@ -72,9 +72,9 @@ node {
     stage('SonarQube analysis') {
       defraUtils.analyseCode(sonarQubeEnv, sonarScanner, ['sonar.projectKey' : serviceName, 'sonar.sources' : '.'])
     }
-    // stage("Code quality gate") {
-    //   defraUtils.waitForQualityGateResult(timeoutInMinutes)
-    // }
+    stage("Code quality gate") {
+      defraUtils.waitForQualityGateResult(timeoutInMinutes)
+    }
     stage('Push container image') {
       defraUtils.buildAndPushContainerImage(DOCKER_REGISTRY_CREDENTIALS_ID, DOCKER_REGISTRY, serviceName, containerTag)
     }
