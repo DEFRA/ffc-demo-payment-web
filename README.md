@@ -31,7 +31,7 @@ Default values for production-like deployments are set in the Helm chart and may
 | NODE_ENV                              | Node environment                          | no       | development           | development,test,production |
 | PORT                                  | Port number                               | no       | 3000                  |                             |
 | COOKIE_PASSWORD                       | password for session cache                | yes      |                       |                             |
-| STATIC_CACHE_TIMEOUT_IN_MILLIS        | timeout in milliseconds for static files  | no       | 2000                  |                             |
+| STATIC_CACHE_TIMEOUT_IN_MILLIS        | timeout in milliseconds for static files  | no       | 900000                |                             |
 | REST_CLIENT_TIMEOUT_IN_MILLIS         | timeout in milliseconds for REST calls    | no       | 2000                  |                             |
 | PAYMENT_SERVICE_URL                   | URL for payment service API               | yes      |                       |                             |
 | OKTA_ENABLED                          | set to true to enable Okta authentication | no       | "true"                |                             |
@@ -68,11 +68,7 @@ A convenience script is provided to run automated tests in a containerised envir
 Examples:
 
 ```
-# Run all tests
 scripts/test
-
-# Run only unit tests
-scripts/test npm run test
 ```
 
 Alternatively, the same tests may be run locally via npm:
@@ -87,10 +83,10 @@ npm run test
 A more convenient way to run tests in development is to use a file watcher to automatically run tests each time associated files are modified. For this purpose, the default docker-compose configuration mounts all app, test and git files into the main `ffc-demo-payment-web` container, enabling the test watcher to be run as shown below. The same approach may be used to execute arbitrary commands in the running app.
 
 ```
-# Run unit test file watcher
+# Run tests in watch mode
 docker-compose run ffc-demo-payment-web npm run test:watch
 
-# Run all tests
+# Run tests
 docker-compose run ffc-demo-payment-web npm test
 
 # Open an interactive shell in the app container
