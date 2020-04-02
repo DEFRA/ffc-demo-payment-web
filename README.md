@@ -31,6 +31,9 @@ Default values for production-like deployments are set in the Helm chart and may
 | NODE_ENV                              | Node environment                          | no       | development           | development,test,production |
 | PORT                                  | Port number                               | no       | 3000                  |                             |
 | COOKIE_PASSWORD                       | password for session cache                | yes      |                       |                             |
+| STATIC_CACHE_TIMEOUT_IN_MILLIS        | timeout in milliseconds for static files  | no       | 2000                  |                             |
+| REST_CLIENT_TIMEOUT_IN_MILLIS         | timeout in milliseconds for REST calls    | no       | 2000                  |                             |
+| PAYMENT_SERVICE_URL                   | URL for payment service API               | yes      |                       |                             |
 | OKTA_ENABLED                          | set to true to enable Okta authentication | no       | "true"                |                             |
 | OKTA_DOMAIN                           | Okta domain, i.e. `mysite.okta.com`       | no       |                       |                             |
 | OKTA_CLIENT_ID                        | Client ID of Okta OpenID Connect app      | no       |                       |                             |
@@ -69,7 +72,7 @@ Examples:
 scripts/test
 
 # Run only unit tests
-scripts/test npm run test:unit
+scripts/test npm run test
 ```
 
 Alternatively, the same tests may be run locally via npm:
@@ -85,7 +88,7 @@ A more convenient way to run tests in development is to use a file watcher to au
 
 ```
 # Run unit test file watcher
-docker-compose run ffc-demo-payment-web npm run test:unit-watch
+docker-compose run ffc-demo-payment-web npm run test:watch
 
 # Run all tests
 docker-compose run ffc-demo-payment-web npm test

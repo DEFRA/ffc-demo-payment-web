@@ -6,6 +6,8 @@ const schema = Joi.object({
   port: Joi.number().default(3000),
   env: Joi.string().valid('development', 'test', 'production').default('development'),
   staticCacheTimeoutMillis: Joi.number().default(15 * 60 * 1000),
+  restClientTimeoutMillis: Joi.number().default(20000),
+  paymentServiceUrl: Joi.string().uri().required(),
   cookiePassword: Joi.string().required(),
   oktaEnabled: Joi.boolean().default(true)
 })
@@ -16,7 +18,9 @@ const config = {
   env: process.env.NODE_ENV,
   cookiePassword: process.env.COOKIE_PASSWORD,
   oktaEnabled: process.env.OKTA_ENABLED,
-  staticCacheTimeoutMillis: process.env.STATIC_CACHE_TIMEOUT_IN_MILLIS
+  staticCacheTimeoutMillis: process.env.STATIC_CACHE_TIMEOUT_IN_MILLIS,
+  paymentServiceUrl: process.env.PAYMENT_SERVICE_URL,
+  restClientTimeoutMillis: process.env.REST_CLIENT_TIMEOUT_IN_MILLIS
 }
 
 // Validate config

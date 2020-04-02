@@ -7,7 +7,7 @@ function toRow (payment) {
   return [
     { text: payment.claimId },
     { text: formatDate(payment.paymentDate) },
-    { text: `£${payment.amount}` }
+    { text: `£${payment.paymentAmount}` }
   ]
 }
 

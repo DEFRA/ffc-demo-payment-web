@@ -51,6 +51,10 @@ spec:
           value: "3000"
         - name: STATIC_CACHE_TIMEOUT_IN_MILLIS
           value: {{ quote .Values.container.staticCacheTimeoutMillis }}
+        - name: REST_CLIENT_TIMEOUT_IN_MILLIS
+          value: {{ quote .Values.container.restClientTimeoutMillis }}
+        - name: PAYMENT_SERVICE_URL
+          value: {{ quote .Values.container.paymentServiceUrl }}
         - name: COOKIE_PASSWORD
           value: {{ quote .Values.cookiePassword }}
         - name: OKTA_DOMAIN
