@@ -26,6 +26,8 @@ container:
   allowPrivilegeEscalation: false
   restartPolicy: Always
   staticCacheTimeoutMillis: 54000
+  restClientTimeoutMillis: 20000
+  paymentServiceUrl: http://ffc-demo-payment-service.ffc-demo
   
 ingress:
   endPoint: ffc-demo
