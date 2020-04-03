@@ -11,7 +11,7 @@ module.exports = {
     },
     handler: async (request, h) => {
       const name = request.auth.credentials.profile.firstName
-      const payments = await service.getAll()
+      const payments = await service.getAll(request.auth.credentials.token)
       return h.view('payments', getViewModel(name, payments))
     }
   }
