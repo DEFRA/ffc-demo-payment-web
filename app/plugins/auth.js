@@ -32,7 +32,7 @@ function registerOktaAuth (server) {
       authorizationServerId: config.okta.authorizationServerId
     },
     password: config.cookiePassword,
-    scope: ['email', 'profile', 'openid', 'ffc-demo.payments.read'],
+    scope: ['email', 'profile', 'openid', ...config.okta.scopes],
     isSecure,
     location: config.okta.url,
     clientId: config.okta.clientId,
