@@ -6,6 +6,7 @@ function getOktaConfig () {
     domain: Joi.string().required(),
     clientId: Joi.string().required(),
     clientSecret: Joi.string().required(),
+    authorizationServerId: Joi.string().required(),
     url: Joi.string().required()
   })
 
@@ -14,6 +15,7 @@ function getOktaConfig () {
     domain: process.env.OKTA_DOMAIN,
     clientId: process.env.OKTA_CLIENT_ID,
     clientSecret: process.env.OKTA_CLIENT_SECRET,
+    authorizationServerId: process.env.OKTA_AUTH_SERVER_ID,
     url: process.env.SITE_URL
   }
   // Validate config

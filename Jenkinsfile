@@ -21,7 +21,8 @@ def getExtraCommands(pr, containerTag) {
       string(credentialsId: 'payment-web-cookie-password', variable: 'cookiePassword'),
       string(credentialsId: 'payment-web-okta-domain', variable: 'oktaDomain'),
       string(credentialsId: 'payment-web-okta-client-id', variable: 'oktaClientId'),
-      string(credentialsId: 'payment-web-okta-client-secret', variable: 'oktaClientSecret')
+      string(credentialsId: 'payment-web-okta-client-secret', variable: 'oktaClientSecret'),
+      string(credentialsId: 'payment-web-okta-auth-server-id', variable: 'authorizationServerId'),
     ]) {
 
     def siteUrl =  "https://ffc-payment-web-$containerTag.$INGRESS_SERVER"
@@ -35,6 +36,7 @@ def getExtraCommands(pr, containerTag) {
       /okta.domain="$oktaDomain"/,
       /okta.clientId="$oktaClientId"/,
       /okta.clientSecret="$oktaClientSecret"/,
+      /okta.authorizationServerId="$authorizationServerId"/,
       /siteUrl="$siteUrl"/
     ].join(',')
 

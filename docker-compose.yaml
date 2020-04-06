@@ -15,5 +15,6 @@ services:
       OKTA_DOMAIN: ${OKTA_DOMAIN}
       OKTA_CLIENT_ID: ${OKTA_CLIENT_ID}
       OKTA_CLIENT_SECRET: ${OKTA_CLIENT_SECRET}
+      OKTA_AUTH_SERVER_ID: ${OKTA_AUTH_SERVER_ID}
       SITE_URL: http://localhost:3006
       PAYMENT_SERVICE_URL: http://ffc-demo-payment-service:3004

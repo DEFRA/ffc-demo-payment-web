@@ -63,6 +63,8 @@ spec:
           value: {{ quote .Values.okta.clientId }}
         - name: OKTA_CLIENT_SECRET
           value: {{ quote .Values.okta.clientSecret }}
+        - name: OKTA_AUTH_SERVER_ID
+          value: {{ quote .Values.okta.authorizationServerId }}
         - name: SITE_URL
           value: {{ quote .Values.siteUrl }}
         ports:
