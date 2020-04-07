@@ -2,6 +2,7 @@
 // in a PR for Bell https://github.com/hapijs/bell/pull/450 to support Okta custom authorisation servers
 // this should be the default Okta provider in the next major release but has not been merged yet
 // in the meantime manually add the provider
+
 const Joi = require('@hapi/joi')
 
 const internals = {
@@ -11,22 +12,21 @@ const internals = {
   }).required()
 }
 
-exports = module.exports = function (options) {
+function oktaCustomProvider (options) {
   const settings = Joi.attempt(options, internals.schema)
 
-  let baseUri = settings.uri + '/oauth2'
-  if (settings.authorizationServerId) {
-    baseUri += '/' + settings.authorizationServerId
-  }
+  const baseUri = settings.authorizationServerId
+    ? `${settings.uri}/oauth2/${settings.authorizationServerId}`
+    : `${settings.uri}/oauth2`
 
   return {
     protocol: 'oauth2',
     useParamsAuth: true,
-    auth: baseUri + '/v1/authorize',
-    token: baseUri + '/v1/token',
+    auth: `${baseUri}/v1/authorize`,
+    token: `${baseUri}/v1/token`,
     scope: ['profile', 'openid', 'email', 'offline_access'],
     profile: async function (credentials, params, get) {
-      const profile = await get(baseUri + '/v1/userinfo')
+      const profile = await get(`${baseUri}/v1/userinfo`)
 
       credentials.profile = {
         id: profile.sub,
@@ -40,3 +40,5 @@ exports = module.exports = function (options) {
     }
   }
 }
+
+module.exports = oktaCustomProvider

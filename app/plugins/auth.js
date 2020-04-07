@@ -6,8 +6,7 @@ const config = require('../config')
 const isSecure = config.isProd
 const redirectTo = config.oktaEnabled ? '/auth/okta' : '/auth/dev'
 
-const oktaCustomProvider = require('./okta-custom-provider')
-bell.providers['okta-custom'] = oktaCustomProvider
+bell.providers['okta-custom'] = require('./okta-custom-provider')
 
 function registerSessionAuth (server) {
   server.auth.strategy('session', 'cookie', {
