@@ -42,6 +42,7 @@ okta:
   domain:
   cientId:
   clientSecret:
+  authorizationServerId:
 
 readinessProbe:
   path: /healthy

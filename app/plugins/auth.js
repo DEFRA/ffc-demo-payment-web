@@ -1,10 +1,12 @@
 
 const bell = require('@hapi/bell')
 const authCookie = require('@hapi/cookie')
-const config = require('../config')
 
+const config = require('../config')
 const isSecure = config.isProd
 const redirectTo = config.oktaEnabled ? '/auth/okta' : '/auth/dev'
+
+bell.providers['okta-custom'] = require('./okta-custom-provider')
 
 function registerSessionAuth (server) {
   server.auth.strategy('session', 'cookie', {
@@ -23,9 +25,13 @@ function registerOktaAuth (server) {
   // with the name of the provider, cookie encryption password,
   // and the OAuth client credentials.
   server.auth.strategy('okta', 'bell', {
-    provider: 'okta',
-    config: { uri: `https://${config.okta.domain}` },
+    provider: 'okta-custom',
+    config: {
+      uri: `https://${config.okta.domain}`,
+      authorizationServerId: config.okta.authorizationServerId
+    },
     password: config.cookiePassword,
+    scope: ['email', 'profile', 'openid', ...config.okta.scopes],
     isSecure,
     location: config.okta.url,
     clientId: config.okta.clientId,

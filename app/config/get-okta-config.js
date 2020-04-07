@@ -6,7 +6,9 @@ function getOktaConfig () {
     domain: Joi.string().required(),
     clientId: Joi.string().required(),
     clientSecret: Joi.string().required(),
-    url: Joi.string().required()
+    authorizationServerId: Joi.string().required(),
+    url: Joi.string().required(),
+    scopes: Joi.array().items(Joi.string()).required()
   })
 
   // Build config
@@ -14,7 +16,9 @@ function getOktaConfig () {
     domain: process.env.OKTA_DOMAIN,
     clientId: process.env.OKTA_CLIENT_ID,
     clientSecret: process.env.OKTA_CLIENT_SECRET,
-    url: process.env.SITE_URL
+    authorizationServerId: process.env.OKTA_AUTH_SERVER_ID,
+    url: process.env.SITE_URL,
+    scopes: ['ffc-demo.payments.read', 'ffc-demo.payments.manage', 'ffc-demo.payments.read.self']
   }
   // Validate config
   const result = schema.validate(oktaConfig, {
