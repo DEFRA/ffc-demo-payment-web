@@ -56,7 +56,7 @@ spec:
         - name: PAYMENT_SERVICE_URL
           value: {{ quote .Values.container.paymentServiceUrl }}
         - name: COOKIE_PASSWORD
-          value: {{ quote .Values.container.cookiePassword }}
+          value: {{ quote .Values.cookiePassword }}
         - name: OKTA_DOMAIN
           value: {{ quote .Values.okta.domain }}
         - name: OKTA_CLIENT_ID
