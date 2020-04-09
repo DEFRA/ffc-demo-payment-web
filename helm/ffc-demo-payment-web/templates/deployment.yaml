@@ -56,7 +56,7 @@ spec:
         - name: PAYMENT_SERVICE_URL
           value: {{ quote .Values.container.paymentServiceUrl }}
         - name: COOKIE_PASSWORD
-          value: {{ quote .Values.cookiePassword }}
+          value: {{ quote .Values.container.cookiePassword }}
         - name: OKTA_DOMAIN
           value: {{ quote .Values.okta.domain }}
         - name: OKTA_CLIENT_ID
@@ -67,7 +67,7 @@ spec:
           value: {{ quote .Values.okta.authorizationServerId }}
         - name: SITE_URL
         {{- if .Values.pr }}
-          value: "https://{{ .Values.name }}-{{ .Values.pr }}.{{ .Values.ingress.server }}"
+          value: "{{ .Values.siteUrl }}-{{ .Values.pr }}.{{ .Values.ingress.server }}"
         {{- else }}
           value: {{ quote .Values.siteUrl }}
         {{- end }}
