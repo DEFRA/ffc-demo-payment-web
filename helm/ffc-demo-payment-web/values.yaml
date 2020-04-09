@@ -32,6 +32,7 @@ container:
 ingress:
   endpoint: ffc-demo
   server:
+  alb:
 
 replicas: 1
 minReadySeconds: 5
