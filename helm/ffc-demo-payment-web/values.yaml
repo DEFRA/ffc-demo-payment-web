@@ -30,7 +30,7 @@ container:
   paymentServiceUrl: http://ffc-demo-payment-service.ffc-demo
   
 ingress:
-  endPoint: ffc-demo
+  endpoint: ffc-demo
   server:
 
 replicas: 1

@@ -66,7 +66,11 @@ spec:
         - name: OKTA_AUTH_SERVER_ID
           value: {{ quote .Values.okta.authorizationServerId }}
         - name: SITE_URL
+        {{- if .Values.pr }}
+          value: "{{ .Values.siteUrl }}-{{ .Values.pr }}.{{ .Values.ingress.server }}"
+        {{- else }}
           value: {{ quote .Values.siteUrl }}
+        {{- end }}
         ports:
         - name: http
           containerPort: 3000
