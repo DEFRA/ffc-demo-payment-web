@@ -3,40 +3,40 @@ image: ffc-demo-payment-web
 name: ffc-demo-payment-web
 namespace: ffc-demo
 workstream: ffc-demo
-imagePullSecret:
-labels:
-  instance:
-  version: 1.0.0
-  component: service
+
+labels: {}
+
 service:
   port: 80
   type: ClusterIP
 
 container:
-  priorityClassName: low
-  imagePullPolicy: IfNotPresent
-  redeployOnChange: update this field to force a change
   requestMemory: 60Mi
   requestCpu: 60m
   limitMemory: 80Mi
   limitCpu: 80m
-  runAsNonRoot: true
-  runAsUser: 1000
+  imagePullPolicy: IfNotPresent
   readOnlyRootFilesystem: true
   allowPrivilegeEscalation: false
-  restartPolicy: Always
   staticCacheTimeoutMillis: 54000
   restClientTimeoutMillis: 20000
   paymentServiceUrl: http://ffc-demo-payment-service.ffc-demo
-  
-ingress:
-  endpoint: ffc-demo
-  server:
+  cookiePassword:
+  siteUrl:
 
-replicas: 1
-minReadySeconds: 5
-cookiePassword:
-siteUrl:
+ingress:
+  class: nginx
+  endpoint: ffc-demo
+
+deployment:
+  restartPolicy: Always
+  priorityClassName: low
+  replicas: 1
+  minReadySeconds: 5
+  redeployOnChange: update this field to force a change
+  imagePullSecret:
+  runAsNonRoot: true
+  runAsUser: 1000
 
 okta:
   domain:
