@@ -3,7 +3,7 @@ env:
 - name: NODE_ENV
   value: {{ quote .Values.environment }}
 - name: PORT
-  value: "3000"
+  value: {{ quote .Values.container.port }}
 - name: STATIC_CACHE_TIMEOUT_IN_MILLIS
   value: {{ quote .Values.container.staticCacheTimeoutMillis }}
 - name: REST_CLIENT_TIMEOUT_IN_MILLIS
