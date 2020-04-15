@@ -6,6 +6,8 @@ workstream: ffc-demo
 
 labels: {}
 
+okta: {}
+
 service:
   port: 80
   type: ClusterIP
@@ -37,12 +39,6 @@ deployment:
   imagePullSecret:
   runAsNonRoot: true
   runAsUser: 1000
-
-okta:
-  domain:
-  cientId:
-  clientSecret:
-  authorizationServerId:
 
 readinessProbe:
   path: /healthy
