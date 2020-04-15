@@ -1,4 +1,4 @@
-environment: production
+environment: development
 image: ffc-demo-payment-web
 name: ffc-demo-payment-web
 namespace: ffc-demo
