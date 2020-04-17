@@ -1,5 +1,5 @@
-I, [2020-04-17T17:26:29.260567 #8038]  INFO -- : Registered expected interaction GET /schedule
-D, [2020-04-17T17:26:29.261269 #8038] DEBUG -- : {
+I, [2020-04-17T17:42:07.394962 #8614]  INFO -- : Registered expected interaction GET /schedule
+D, [2020-04-17T17:42:07.395709 #8614] DEBUG -- : {
   "description": "get all schedules",
   "providerState": "schedules exist",
   "request": {
@@ -24,8 +24,8 @@ D, [2020-04-17T17:26:29.261269 #8038] DEBUG -- : {
   },
   "metadata": null
 }
-I, [2020-04-17T17:26:29.274422 #8038]  INFO -- : Received request GET /schedule
-D, [2020-04-17T17:26:29.274919 #8038] DEBUG -- : {
+I, [2020-04-17T17:42:07.409489 #8614]  INFO -- : Received request GET /schedule
+D, [2020-04-17T17:42:07.409904 #8614] DEBUG -- : {
   "path": "/schedule",
   "query": "",
   "method": "get",
@@ -36,8 +36,8 @@ D, [2020-04-17T17:26:29.274919 #8038] DEBUG -- : {
     "Version": "HTTP/1.1"
   }
 }
-I, [2020-04-17T17:26:29.275434 #8038]  INFO -- : Found matching response for GET /schedule
-D, [2020-04-17T17:26:29.275784 #8038] DEBUG -- : {
+I, [2020-04-17T17:42:07.410371 #8614]  INFO -- : Found matching response for GET /schedule
+D, [2020-04-17T17:42:07.410653 #8614] DEBUG -- : {
   "status": 200,
   "headers": {
     "Content-Type": "application/json; charset=utf-8"
@@ -53,6 +53,6 @@ D, [2020-04-17T17:26:29.275784 #8038] DEBUG -- : {
     "min": 1
   }
 }
-I, [2020-04-17T17:26:29.285577 #8038]  INFO -- : Verifying - interactions matched
-I, [2020-04-17T17:26:29.293041 #8038]  INFO -- : Cleared interactions
-I, [2020-04-17T17:26:29.301651 #8038]  INFO -- : Writing pact for ffc-demo-payment-service to /c/Repos/ffc-demo-payment-web/test/contract/pacts/ffc-demo-payment-web-ffc-demo-payment-service.json
+I, [2020-04-17T17:42:07.423368 #8614]  INFO -- : Verifying - interactions matched
+I, [2020-04-17T17:42:07.431478 #8614]  INFO -- : Cleared interactions
+I, [2020-04-17T17:42:07.439818 #8614]  INFO -- : Writing pact for ffc-demo-payment-service to /c/Repos/ffc-demo-payment-web/test/contract/pacts/ffc-demo-payment-web-ffc-demo-payment-service.json

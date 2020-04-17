@@ -2,18 +2,18 @@ const path = require('path')
 const { Pact } = require('@pact-foundation/pact')
 const Matchers = require('@pact-foundation/pact/dsl/matchers')
 let scheduleService
+let provider
 
-const provider = new Pact({
-  consumer: 'ffc-demo-payment-web',
-  provider: 'ffc-demo-payment-service',
-  port: 1234,
-  log: path.resolve(process.cwd(), 'test/contract/logs', 'pact.log'),
-  dir: path.resolve(process.cwd(), 'test/contract/pacts'),
-  logLevel: 'INFO'
-})
-
-describe('Healthy test', () => {
+describe('Schedule contract test', () => {
   beforeAll(async () => {
+    provider = new Pact({
+      consumer: 'ffc-demo-payment-web',
+      provider: 'ffc-demo-payment-service',
+      port: 1234,
+      log: path.resolve(process.cwd(), 'test/contract/logs', 'pact.log'),
+      dir: path.resolve(process.cwd(), 'test/contract/pacts'),
+      logLevel: 'INFO'
+    })
     await provider.setup()
     const mockPaymentServiceUrl = provider.mockService.baseUrl
     jest.mock('../../app/config', () => {
@@ -24,7 +24,7 @@ describe('Healthy test', () => {
     scheduleService = require('../../app/services/payment-schedule-service')
   })
 
-  test('GetAll returns providers', async () => {
+  test('GetAll returns schedule', async () => {
     await provider.addInteraction({
       state: 'schedules exist',
       uponReceiving: 'get all schedules',
