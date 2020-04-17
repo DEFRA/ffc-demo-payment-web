@@ -15,6 +15,6 @@ services:
       OKTA_DOMAIN: mydomain.otka.com
       OKTA_CLIENT_ID: placeholderclientid
       OKTA_CLIENT_SECRET: placeholdersecret
-      OKTA_AUTH_SERVER_ID: placeholderauthserverid
+      OKTA_AUTH_SERVER_ID: placeholderauthserverid      
     volumes:
       - ./test-output/:/home/node/test-output/
