@@ -12,7 +12,6 @@
     "build": "npm run build:css",
     "build:css": "node-sass --output=app/static/stylesheets --output-style=expanded app/static/stylesheets",
     "build:css-watch": "node-sass --output=app/static/stylesheets --output-style=expanded --source-map true --watch app/static/stylesheets",
-    "pretest": "jest",
     "test": "jest",
     "test:pact": "jest --testPathPattern=test/contract",
     "test:watch": "jest --coverage=false --onlyChanged --watch",
