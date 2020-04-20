@@ -10,5 +10,3 @@ lcov.info
 node_modules
 npm-debug.log
 test-output
-test/contract/pacts/
-test/contract/logs/

@@ -10,8 +10,8 @@ describe('Schedule contract test', () => {
       consumer: 'ffc-demo-payment-web',
       provider: 'ffc-demo-payment-service',
       port: 1234,
-      log: path.resolve(process.cwd(), 'test/contract/logs', 'pact.log'),
-      dir: path.resolve(process.cwd(), 'test/contract/pacts'),
+      log: path.resolve(process.cwd(), 'test-output', 'pact.log'),
+      dir: path.resolve(process.cwd(), 'test-output'),
       logLevel: 'INFO'
     })
     await provider.setup()
