@@ -53,6 +53,5 @@ describe('Schedule contract test', () => {
 
   afterAll(async () => {
     await provider.finalize()
-    jest.unmock('../../app/config')
   })
 })
