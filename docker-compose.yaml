@@ -10,8 +10,8 @@ services:
     image: ffc-demo-payment-web
     environment:
       NODE_ENV: development
-      OKTA_ENABLED: "false"
       COOKIE_PASSWORD: cookiecookiecookiecookiecookiecookiecookiecookiecookie
+      OKTA_ENABLED: ${OKTA_ENABLED:-true}
       OKTA_DOMAIN: ${OKTA_DOMAIN}
       OKTA_CLIENT_ID: ${OKTA_CLIENT_ID}
       OKTA_CLIENT_SECRET: ${OKTA_CLIENT_SECRET}
