@@ -1,10 +1,10 @@
 const path = require('path')
 const { Pact } = require('@pact-foundation/pact')
 const Matchers = require('@pact-foundation/pact/dsl/matchers')
-let scheduleService
+let paymentService
 let provider
 
-describe('Schedule contract test', () => {
+describe('Payment contract test', () => {
   beforeAll(async () => {
     provider = new Pact({
       consumer: 'ffc-demo-payment-web',
@@ -22,16 +22,16 @@ describe('Schedule contract test', () => {
         paymentServiceUrl: mockPaymentServiceUrl
       }
     })
-    scheduleService = require('../../app/services/payment-schedule-service')
+    paymentService = require('../../app/services/payment-service')
   })
 
-  test('GetAll returns schedule', async () => {
+  test('GetAll returns payments', async () => {
     await provider.addInteraction({
-      state: 'schedules exist',
-      uponReceiving: 'get all schedules',
+      state: 'payments exist',
+      uponReceiving: 'get all payments',
       withRequest: {
         method: 'GET',
-        path: '/schedule'
+        path: '/payment'
       },
       willRespondWith: {
         status: 200,
@@ -39,12 +39,13 @@ describe('Schedule contract test', () => {
           'Content-Type': 'application/json; charset=utf-8'
         },
         body: Matchers.eachLike({
-          claimId: Matchers.like('MINE123')
+          claimId: Matchers.like('MINE123'),
+          paymentAmount: Matchers.like(100.00)
         }, { min: 1 })
       }
     })
 
-    const response = await scheduleService.getAll('token')
+    const response = await paymentService.getAll('token')
     expect(response[0].claimId).toBe('MINE123')
   })
 
