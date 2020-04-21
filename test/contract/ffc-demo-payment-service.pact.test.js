@@ -11,9 +11,7 @@ describe('Schedule contract test', () => {
       provider: 'ffc-demo-payment-service',
       port: 1234,
       log: path.resolve(process.cwd(), 'test-output', 'pact.log'),
-      dir: path.resolve(process.cwd(), 'test-output'),
-      logLevel: 'INFO',
-      pactfileWriteMode: 'merge'
+      dir: path.resolve(process.cwd(), 'test-output')
     })
     await provider.setup()
     const mockPaymentServiceUrl = provider.mockService.baseUrl
