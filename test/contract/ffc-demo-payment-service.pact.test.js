@@ -15,15 +15,13 @@ describe('Schedule contract test', () => {
     })
     await provider.setup()
     const mockPaymentServiceUrl = provider.mockService.baseUrl
-    jest.mock('../../app/config', () => {
-      return {
-        paymentServiceUrl: mockPaymentServiceUrl
-      }
-    })
+    jest.mock('../../app/config', () => ({
+      paymentServiceUrl: mockPaymentServiceUrl
+    }))
     scheduleService = require('../../app/services/payment-schedule-service')
   })
 
-  test('GetAll returns schedule', async () => {
+  test('GetAll returns schedule (including optional fields)', async () => {
     await provider.addInteraction({
       state: 'schedules exist',
       uponReceiving: 'get all schedules',
@@ -37,13 +35,20 @@ describe('Schedule contract test', () => {
           'Content-Type': 'application/json; charset=utf-8'
         },
         body: Matchers.eachLike({
-          claimId: Matchers.like('MINE123')
+          claimId: Matchers.like('MINE123'),
+          paymentAmount: Matchers.decimal(),
+          paymentDate: Matchers.iso8601DateTime()
         }, { min: 1 })
       }
     })
 
     const response = await scheduleService.getAll('token')
-    expect(response[0].claimId).toBe('MINE123')
+    console.log(response)
+    expect(response[0]).toEqual(expect.objectContaining({
+      claimId: 'MINE123',
+      paymentAmount: 13.01,
+      paymentDate: '2015-08-06T16:53:10+01:00'
+    }))
   })
 
   afterEach(async () => {
