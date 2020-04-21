@@ -39,7 +39,6 @@
     "@hapi/vision": "^5.5.4",
     "@hapi/wreck": "^15.1.0",
     "@hapi/yar": "^9.2.1",
-    "@pact-foundation/pact": "^9.9.5",
     "govuk-frontend": "^3.2.0",
     "moment": "^2.24.0",
     "nunjucks": "^3.2.1"
@@ -48,6 +47,7 @@
     "@hapi/good": "^8.2.3",
     "@hapi/good-console": "^8.1.2",
     "@hapi/good-squeeze": "^5.2.1",
+    "@pact-foundation/pact": "^9.9.12",
     "blipp": "^4.0.1",
     "jest": "^25.1.0",
     "jest-junit": "^8.0.0",
