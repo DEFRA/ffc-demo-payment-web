@@ -9,7 +9,7 @@ describe('Payment contract test', () => {
     provider = new Pact({
       consumer: 'ffc-demo-payment-web',
       provider: 'ffc-demo-payment-service',
-      port: 1234,
+      port: 4444,
       log: path.resolve(process.cwd(), 'test-output', 'pact.log'),
       dir: path.resolve(process.cwd(), 'test-output'),
       logLevel: 'INFO',
