@@ -21,7 +21,7 @@ describe('Schedule contract test', () => {
     scheduleService = require('../../app/services/payment-schedule-service')
   })
 
-  test('GetAll returns schedule (including optional fields)', async () => {
+  test('GetAll returns schedule list (including optional fields)', async () => {
     await provider.addInteraction({
       state: 'schedules exist',
       uponReceiving: 'get all schedules',
@@ -36,17 +36,41 @@ describe('Schedule contract test', () => {
         },
         body: Matchers.eachLike({
           claimId: Matchers.like('MINE123'),
-          paymentAmount: Matchers.decimal(),
           paymentDate: Matchers.iso8601DateTime()
         }, { min: 1 })
       }
     })
 
     const response = await scheduleService.getAll('token')
-    console.log(response)
     expect(response[0]).toEqual(expect.objectContaining({
       claimId: 'MINE123',
-      paymentAmount: 13.01,
+      paymentDate: '2015-08-06T16:53:10+01:00'
+    }))
+  })
+
+  test('Get schedule by claim id returns schedule info', async () => {
+    await provider.addInteraction({
+      state: 'schedule exists',
+      uponReceiving: 'get schedule',
+      withRequest: {
+        method: 'GET',
+        path: '/schedule/MINE001'
+      },
+      willRespondWith: {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8'
+        },
+        body: Matchers.eachLike({
+          claimId: Matchers.like('MINE001'),
+          paymentDate: Matchers.iso8601DateTime()
+        })
+      }
+    })
+
+    const [schedule] = await scheduleService.getSchedulesByClaim('MINE001', 'token')
+    expect(schedule).toEqual(expect.objectContaining({
+      claimId: 'MINE001',
       paymentDate: '2015-08-06T16:53:10+01:00'
     }))
   })
@@ -59,3 +83,10 @@ describe('Schedule contract test', () => {
     await provider.finalize()
   })
 })
+
+/* const getSampleSchedules = () => [
+  {
+    claimId: 'MINE123',
+    paymentDate: '2020-04-01T14:10:20.331Z'
+  }
+] */
