@@ -75,6 +75,22 @@ describe('Schedule contract test', () => {
     }))
   })
 
+  test('Get schedule by claim id returns 404 where claim id isn\'t found', async () => {
+    await provider.addInteraction({
+      state: 'schedule doesn\'t exist',
+      uponReceiving: 'get schedule',
+      withRequest: {
+        method: 'GET',
+        path: '/schedule/NOTMINEWONTFIND'
+      },
+      willRespondWith: {
+        status: 404
+      }
+    })
+
+    await expect(scheduleService.getSchedulesByClaim('NOTMINEWONTFIND', 'token')).rejects.toThrow()
+  })
+
   afterEach(async () => {
     await provider.verify()
   })
