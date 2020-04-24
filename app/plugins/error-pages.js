@@ -1,6 +1,4 @@
-/*
-* Add an `onPreResponse` listener to return error pages
-*/
+const codesWithViews = [403, 404]
 
 module.exports = {
   plugin: {
@@ -12,8 +10,8 @@ module.exports = {
         if (response.isBoom) {
           const statusCode = response.output.statusCode
 
-          if (statusCode === 404) {
-            return h.view('404').code(statusCode)
+          if (codesWithViews.includes(statusCode)) {
+            return h.view(statusCode.toString()).code(statusCode)
           }
 
           request.log('error', {
