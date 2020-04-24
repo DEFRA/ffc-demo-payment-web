@@ -27,7 +27,10 @@ describe('Schedule contract test', () => {
       uponReceiving: 'get all schedules',
       withRequest: {
         method: 'GET',
-        path: '/schedule'
+        path: '/schedule',
+        headers: {
+          Authorization: Matchers.like('Bearer abc-123')
+        }
       },
       willRespondWith: {
         status: 200,
