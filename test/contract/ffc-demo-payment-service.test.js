@@ -102,10 +102,3 @@ describe('Schedule contract test', () => {
     await provider.finalize()
   })
 })
-
-/* const getSampleSchedules = () => [
-  {
-    claimId: 'MINE123',
-    paymentDate: '2020-04-01T14:10:20.331Z'
-  }
-] */

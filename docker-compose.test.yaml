@@ -17,4 +17,4 @@ services:
       OKTA_CLIENT_SECRET: placeholdersecret
       OKTA_AUTH_SERVER_ID: placeholderauthserverid
     volumes:
-      - ./test-output/:/home/node/test-output/      
+      - ./test-output/:/home/node/test-output/
