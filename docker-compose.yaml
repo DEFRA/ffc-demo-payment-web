@@ -18,3 +18,4 @@ services:
       OKTA_AUTH_SERVER_ID: ${OKTA_AUTH_SERVER_ID}
       SITE_URL: http://localhost:3006
       PAYMENT_SERVICE_URL: http://ffc-demo-payment-service:3004
+      PACT_DO_NOT_TRACK: 1

@@ -10,6 +10,13 @@ async function getAll (token) {
   return result.payload
 }
 
+async function getSchedulesByClaim (claimId, token) {
+  const headers = { authorization: `Bearer ${token}` }
+  const result = await wreck.get(`${config.paymentServiceUrl}/schedule/${claimId}`, { headers })
+  return result.payload
+}
+
 module.exports = {
-  getAll
+  getAll,
+  getSchedulesByClaim
 }
