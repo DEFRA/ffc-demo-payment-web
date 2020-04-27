@@ -95,6 +95,10 @@ docker-compose run ffc-demo-payment-web npm test
 docker-compose run ffc-demo-payment-web sh
 ```
 
+### Contract testing
+
+Contract testing has been introduced to the app, using the Pact toolkit. Tests are located in test/contract, and run as part of a full test run, or can be run in isolation via `npm run test:pact`. As part of a test run, a 'Pact' is generated in `test-output`, a JSON file detailing how endpoints in the payment service are used and facilitating contract tests within that service.
+
 ### Why docker-compose.test.yaml exists
 
 Given that tests can be run in the main ffc-demo-payment-web container during development, it may not be obvious why `docker-compose.test.yaml` exists. It's main purpose is for CI pipelines, where tests need to run in a container without any ports forwarded from the host machine.
