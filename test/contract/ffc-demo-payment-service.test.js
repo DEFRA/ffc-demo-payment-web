@@ -54,7 +54,7 @@ describe('Schedule contract test', () => {
   test('Get schedule by claim id returns schedule info', async () => {
     await provider.addInteraction({
       state: 'schedule exists',
-      uponReceiving: 'get schedule',
+      uponReceiving: 'get schedule by claim id',
       withRequest: {
         method: 'GET',
         path: '/schedule/MINE001'
