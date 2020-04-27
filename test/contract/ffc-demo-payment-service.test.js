@@ -54,7 +54,7 @@ describe('Schedule contract test', () => {
   test('Get schedule by claim id returns schedule info', async () => {
     await provider.addInteraction({
       state: 'schedule exists',
-      uponReceiving: 'get schedule',
+      uponReceiving: 'get schedule by claim id',
       withRequest: {
         method: 'GET',
         path: '/schedule/MINE001'
@@ -81,7 +81,7 @@ describe('Schedule contract test', () => {
   test('Get schedule by claim id returns 404 where claim id isn\'t found', async () => {
     await provider.addInteraction({
       state: 'schedule doesn\'t exist',
-      uponReceiving: 'get schedule',
+      uponReceiving: 'schedule by claim id',
       withRequest: {
         method: 'GET',
         path: '/schedule/NOTMINEWONTFIND'
