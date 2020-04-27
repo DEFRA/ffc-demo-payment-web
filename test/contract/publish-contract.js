@@ -5,7 +5,9 @@ const packageJson = require('../../package.json')
 const opts = {
   pactFilesOrDirs: [path.resolve(process.cwd(), 'test-output')],
   pactBroker: process.env.PACT_BROKER || 'http://localhost:9292',
-  consumerVersion: packageJson.version
+  consumerVersion: packageJson.version,
+  pactBrokerUsername: 'pact',
+  pactBrokerPassword: 'pact'
 }
 
 new Publisher(opts).publishPacts()
