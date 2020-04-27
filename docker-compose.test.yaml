@@ -16,5 +16,6 @@ services:
       OKTA_CLIENT_ID: placeholderclientid
       OKTA_CLIENT_SECRET: placeholdersecret
       OKTA_AUTH_SERVER_ID: placeholderauthserverid
+      PACT_BROKER: http://localhost:9292
     volumes:
       - ./test-output/:/home/node/test-output/
