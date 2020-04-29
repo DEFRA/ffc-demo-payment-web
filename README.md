@@ -41,18 +41,6 @@ Default values for production-like deployments are set in the Helm chart and may
 | OKTA_AUTH_SERVER_ID                   | ID of Okta custom authorisation server    | no       |                       |                             |
 | SITE_URL                              | URL of site, i.e. https://mysite.com      | no       |                       |                             |
 
-## Building the project locally
-
-To build the project locally the Docker client must be authenticated against the private Defra container registry to retrieve the parent image.
-An ECR registry provides exact commands for authenticating the Docker client.
-These can be found by selecting a repository and clicking the `View push commands` button.
-
-The environment variable `DOCKER_REGISTRY` must be set to the registry holding the Defra parent image,
-i.e.
-```
-export DOCKER_REGISTRY=registryid.myprivatedockersite.com
-```
-
 ## Running the project locally
 
 The web site can authenticate using [Okta](https://www.okta.com/), or using stubbed authentication for local development. 
@@ -119,9 +107,6 @@ For the site to render correctly locally `npm run build` must be run on the host
 By default, the start script will build (or rebuild) images so there will rarely be a need to build images manually. However, this can be achieved through the Docker Compose [build](https://docs.docker.com/compose/reference/build/) command:
 
 ```
-# Authenticate with FFC container image registry (requires pre-configured AWS credentials on your machine)
-aws ecr get-login --no-include-email | sh
-
 # Build container images
 docker-compose build
 ```
@@ -222,7 +207,7 @@ where `xx.xx.xx.xx` is the public IP Address of the Ingress Controller.
 
 A detailed description on the build pipeline and PR work flow is available in the [Defra Confluence page](https://eaflood.atlassian.net/wiki/spaces/FFCPD/pages/1281359920/Build+Pipeline+and+PR+Workflow)
 
-## License
+## Licence
 
 THIS INFORMATION IS LICENSED UNDER THE CONDITIONS OF THE OPEN GOVERNMENT LICENCE found at:
 
@@ -232,7 +217,7 @@ The following attribution statement MUST be cited in your products and applicati
 
 > Contains public sector information licensed under the Open Government license v3
 
-### About the license
+### About the licence
 
 The Open Government Licence (OGL) was developed by the Controller of Her Majesty's Stationery Office (HMSO) to enable information providers in the public sector to license the use and re-use of their information under a common open licence.
 
