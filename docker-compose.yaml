@@ -5,8 +5,6 @@ services:
     build:
       context: .
       target: production
-      args:
-        REGISTRY: ${DOCKER_REGISTRY}
     image: ffc-demo-payment-web
     environment:
       NODE_ENV: development
