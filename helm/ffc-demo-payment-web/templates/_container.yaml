@@ -12,6 +12,9 @@ env:
   value: {{ quote .Values.container.paymentServiceUrl }}
 - name: COOKIE_PASSWORD
   value: {{ quote .Values.container.cookiePassword }}
+- name: OIDC_PROVIDER
+  value: {{ quote .Values.oidcProvider }}
+{{- if .Values.okta }}
 - name: OKTA_DOMAIN
   value: {{ quote .Values.okta.domain }}
 - name: OKTA_CLIENT_ID
@@ -20,6 +23,15 @@ env:
   value: {{ quote .Values.okta.clientSecret }}
 - name: OKTA_AUTH_SERVER_ID
   value: {{ quote .Values.okta.authorizationServerId }}
+{{- end }}
+{{- if .Values.b2c }}
+- name: B2C_CLIENT_ID
+  value: {{ quote .Values.b2c.clientId }}
+- name: B2C_CLIENT_SECRET
+  value: {{ quote .Values.b2c.clientSecret }}
+- name: B2C_URL
+  value: {{ quote .Values.b2c.url }}
+{{- end }}
 - name: SITE_URL
 {{- if .Values.pr }}
   value: "{{ .Values.container.siteUrl }}-{{ .Values.pr }}.{{ .Values.ingress.server }}"

@@ -10,8 +10,7 @@ const schema = Joi.object({
   restClientTimeoutMillis: Joi.number().default(20 * 1000),
   paymentServiceUrl: Joi.string().uri().required(),
   cookiePassword: Joi.string().required(),
-  oktaEnabled: Joi.boolean().default(true),
-  oidcProvider: Joi.string().default('')
+  oidcProvider: Joi.string().default('dev').lowercase()
 })
 
 // Build config
@@ -19,7 +18,6 @@ const config = {
   port: process.env.PORT,
   env: process.env.NODE_ENV,
   cookiePassword: process.env.COOKIE_PASSWORD,
-  oktaEnabled: process.env.OKTA_ENABLED,
   oidcProvider: process.env.OIDC_PROVIDER,
   staticCacheTimeoutMillis: process.env.STATIC_CACHE_TIMEOUT_IN_MILLIS,
   paymentServiceUrl: process.env.PAYMENT_SERVICE_URL,
@@ -43,9 +41,9 @@ const value = result.value
 value.isDev = (value.env === 'development' || value.env === 'test')
 value.isTest = value.env === 'test'
 value.isProd = value.env === 'production'
-if (value.oidcProvider === 'B2C') {
+if (value.oidcProvider === 'b2c') {
   value.b2c = getB2cConfig()
-} else if (value.oktaEnabled) {
+} else if (value.oidcProvider === 'okta') {
   value.okta = getOktaConfig()
 }
 module.exports = value

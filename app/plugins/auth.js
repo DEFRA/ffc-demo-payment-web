@@ -4,8 +4,7 @@ const authCookie = require('@hapi/cookie')
 
 const config = require('../config')
 const isSecure = config.isProd
-let redirectTo = config.oktaEnabled ? '/auth/okta' : '/auth/dev'
-redirectTo = config.oidcProvider === 'B2C' ? '/auth/b2c' : redirectTo
+const redirectTo = `/auth/${config.oidcProvider}`
 
 bell.providers['okta-custom'] = require('./okta-custom-provider')
 bell.providers['b2c-custom'] = require('./b2c-custom-provider')
@@ -66,9 +65,9 @@ module.exports = {
     register: async (server) => {
       await server.register([authCookie, bell])
       registerSessionAuth(server)
-      if (config.oidcProvider === 'B2C') {
+      if (config.oidcProvider === 'b2c') {
         registerB2cAuth(server)
-      } else if (config.oktaEnabled) {
+      } else if (config.oidcProvider === 'okta') {
         registerOktaAuth(server)
       }
     }

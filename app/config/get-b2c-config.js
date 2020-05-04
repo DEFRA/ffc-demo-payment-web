@@ -26,7 +26,7 @@ function getB2cConfig () {
 
   // Throw if config is invalid
   if (result.error) {
-    throw new Error(`The okta config is invalid. ${result.error.message}`)
+    throw new Error(`The b2c config is invalid. ${result.error.message}`)
   }
   return result.value
 }

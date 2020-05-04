@@ -5,8 +5,9 @@ namespace: ffc-demo
 workstream: ffc-demo
 
 labels: {}
-
+oidcProvider: b2c
 okta: {}
+b2c: {}
 
 service:
   port: 80

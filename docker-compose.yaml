@@ -8,12 +8,15 @@ services:
     image: ffc-demo-payment-web
     environment:
       NODE_ENV: development
-      OKTA_ENABLED: "false"
+      OIDC_PROVIDER: b2c
       COOKIE_PASSWORD: cookiecookiecookiecookiecookiecookiecookiecookiecookie
       OKTA_DOMAIN: ${OKTA_DOMAIN}
       OKTA_CLIENT_ID: ${OKTA_CLIENT_ID}
       OKTA_CLIENT_SECRET: ${OKTA_CLIENT_SECRET}
       OKTA_AUTH_SERVER_ID: ${OKTA_AUTH_SERVER_ID}
+      B2C_CLIENT_ID: ${B2C_CLIENT_ID}
+      B2C_CLIENT_SECRET: ${B2C_CLIENT_SECRET}
+      B2C_URL: ${B2C_URL}
       SITE_URL: http://localhost:3006
       PAYMENT_SERVICE_URL: http://ffc-demo-payment-service:3004
       PACT_DO_NOT_TRACK: 1
