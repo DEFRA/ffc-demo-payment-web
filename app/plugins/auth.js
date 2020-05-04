@@ -4,9 +4,11 @@ const authCookie = require('@hapi/cookie')
 
 const config = require('../config')
 const isSecure = config.isProd
-const redirectTo = config.oktaEnabled ? '/auth/okta' : '/auth/dev'
+let redirectTo = config.oktaEnabled ? '/auth/okta' : '/auth/dev'
+redirectTo = config.oidcProvider === 'B2C' ? '/auth/b2c' : redirectTo
 
 bell.providers['okta-custom'] = require('./okta-custom-provider')
+bell.providers['b2c-custom'] = require('./b2c-custom-provider')
 
 function registerSessionAuth (server) {
   server.auth.strategy('session', 'cookie', {
@@ -20,6 +22,25 @@ function registerSessionAuth (server) {
   })
 }
 
+function registerB2cAuth (server) {
+  server.auth.strategy('b2c', 'bell', {
+    provider: 'b2c-custom',
+    config: {
+      uri: config.b2c.b2cUrl,
+      clientId: config.b2c.clientId
+    },
+    providerParams: {
+      response_type: 'code',
+      nonce: 'defaultNonce',
+      prompt: 'login'
+    },
+    password: config.cookiePassword,
+    isSecure,
+    location: config.b2c.url,
+    clientId: config.b2c.clientId,
+    clientSecret: config.b2c.clientSecret
+  })
+}
 function registerOktaAuth (server) {
   // Declare an authentication strategy using the bell scheme
   // with the name of the provider, cookie encryption password,
@@ -45,7 +66,9 @@ module.exports = {
     register: async (server) => {
       await server.register([authCookie, bell])
       registerSessionAuth(server)
-      if (config.oktaEnabled) {
+      if (config.oidcProvider === 'B2C') {
+        registerB2cAuth(server)
+      } else if (config.oktaEnabled) {
         registerOktaAuth(server)
       }
     }
