@@ -4,7 +4,7 @@ ARG PORT_DEBUG=9229
 ARG REGISTRY
 
 # Development
-FROM ${REGISTRY}/ffc-node-development:${PARENT_VERSION} AS development
+FROM defradigital/node-development:${PARENT_VERSION} AS development
 ARG PARENT_VERSION
 ARG REGISTRY
 LABEL uk.gov.defra.ffc.parent-image=${REGISTRY}/ffc-node-development:${PARENT_VERSION}
@@ -25,7 +25,7 @@ RUN npm run build
 CMD [ "npm", "run", "start:watch" ]
 
 # Production
-FROM ${REGISTRY}/ffc-node:${PARENT_VERSION} AS production
+FROM defradigital/node:${PARENT_VERSION} AS production
 ARG PARENT_VERSION
 ARG REGISTRY
 LABEL uk.gov.defra.ffc.parent-image=${REGISTRY}/ffc-node:${PARENT_VERSION}
