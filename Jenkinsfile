@@ -3,10 +3,11 @@
 def postTestTasks = {
   stage('Publish Pact to broker') {
     withCredentials([
-      string(credentialsId: 'pact-broker-url', variable: 'pactBrokerURL')
+      string(credentialsId: 'pact-broker-url', variable: 'pactBrokerURL'),
+      usernamePassword(credentialsId: 'pact-broker-credentials', usernameVariable: 'pactUsername', passwordVariable: 'pactPassword')
     ]) {
       // publish pact to broker
-      sh "node $WORKSPACE/test/contract/publish-contract.js --pactBroker=$pactBrokerURL"
+      sh "node $WORKSPACE/test/contract/publish-contract.js --pactBroker=$pactBrokerURL --pactUsername=$pactUsername --pactPassword=$pactPassword"
     }
   }
 }
