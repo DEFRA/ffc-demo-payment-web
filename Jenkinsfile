@@ -1,7 +1,7 @@
 @Library('defra-library@4') _
 
 buildNodeJs environment: 'dev',
-  testClosure: () => {
+  testClosure: {
     withCredentials([
       string(credentialsId: 'pact-broker-url', variable: 'pactBrokerURL')
     ]) {
