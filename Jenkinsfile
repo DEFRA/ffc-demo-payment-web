@@ -1,7 +1,7 @@
 @Library('defra-library@4') _
 
-buildNodeJs environment: 'dev',
-  testClosure: {
+def postTestTasks = {
+  stage('Publish Pact to broker') {
     withCredentials([
       string(credentialsId: 'pact-broker-url', variable: 'pactBrokerURL')
     ]) {
@@ -9,3 +9,7 @@ buildNodeJs environment: 'dev',
       sh "node $WORKSPACE/test/contract/publish-contract.js --pactBroker=$pactBrokerURL"
     }
   }
+}
+
+buildNodeJs environment: 'dev',
+  testClosure: postTestTasks
