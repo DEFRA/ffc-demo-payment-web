@@ -1,3 +1,4 @@
+
 const config = require('../config')
 const wreck = require('@hapi/wreck').defaults({
   timeout: config.restClientTimeoutMillis,
@@ -13,6 +14,7 @@ async function getAll (token) {
 async function getSchedulesByClaim (claimId, token) {
   const headers = { authorization: `Bearer ${token}` }
   const result = await wreck.get(`${config.paymentServiceUrl}/schedule/${claimId}`, { headers })
+
   return result.payload
 }
 

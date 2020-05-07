@@ -17,7 +17,6 @@ function getB2cConfig () {
     b2cUrl: process.env.B2C_URL,
     url: process.env.SITE_URL,
     scopes: []
-    // scopes: ['ffc-demo.payments.read', 'ffc-demo.payments.manage', 'ffc-demo.payments.read.self']
   }
   // Validate config
   const result = schema.validate(b2cConfig, {
