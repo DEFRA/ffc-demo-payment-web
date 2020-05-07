@@ -7,8 +7,7 @@ def postTestTasks = {
       usernamePassword(credentialsId: 'pact-broker-credentials', usernameVariable: 'pactUsername', passwordVariable: 'pactPassword')
     ]) {
       // publish pact to broker
-      sh "pwd"
-      sh "ls -la"
+      sh "npm i"
       sh "node $WORKSPACE/test/contract/publish-contract.js --pactBroker=$pactBrokerURL --pactUsername=$pactUsername --pactPassword=$pactPassword"
     }
   }
