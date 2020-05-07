@@ -15,13 +15,5 @@ def postTestTasks = {
   }
 }
 
-def postValidateTasks = {
-  stage('Post validate stage') {
-    sh "ls -la"
-    sh "rm -rf node_modules"
-  }
-}
-
 buildNodeJs environment: 'dev',
-  testClosure: postTestTasks,
-  validateClosure: postValidateTasks
+  testClosure: postTestTasks
