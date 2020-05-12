@@ -8,7 +8,7 @@ services:
     image: ffc-demo-payment-web
     environment:
       NODE_ENV: development
-      OIDC_PROVIDER: b2c
+      OIDC_PROVIDER: dev
       COOKIE_PASSWORD: cookiecookiecookiecookiecookiecookiecookiecookiecookie
       OKTA_DOMAIN: ${OKTA_DOMAIN}
       OKTA_CLIENT_ID: ${OKTA_CLIENT_ID}

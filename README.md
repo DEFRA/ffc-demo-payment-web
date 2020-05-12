@@ -46,7 +46,7 @@ Default values for production-like deployments are set in the Helm chart and may
 
 ## Running the project locally
 
-The web site can authenticate using [Okta](https://www.okta.com/), or using stubbed authentication for local development. 
+The web site can authenticate using [Okta](https://www.okta.com/), B2C, or by using stubbed authentication for local development. 
 To use the stubbed authentication set `OIDC_PROVIDER` to `"dev"`.
 
 Okta specific environment variables must be set if `OIDC_PROVIDER` is set to `"okta"`.

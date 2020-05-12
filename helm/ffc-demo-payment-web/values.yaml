@@ -5,7 +5,7 @@ namespace: ffc-demo
 workstream: ffc-demo
 
 labels: {}
-oidcProvider: b2c
+oidcProvider: dev
 okta: {}
 b2c: {}
 
