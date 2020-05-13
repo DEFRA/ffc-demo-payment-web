@@ -23,7 +23,7 @@ container:
   allowPrivilegeEscalation: false
   staticCacheTimeoutMillis: 54000
   restClientTimeoutMillis: 20000
-  paymentServiceUrl: http://ffc-demo-payment-service.ffc-demo-payment-service-pr83
+  paymentServiceUrl: http://ffc-demo-payment-service.ffc-demo
   port: 3000
   cookiePassword:
   siteUrl:
