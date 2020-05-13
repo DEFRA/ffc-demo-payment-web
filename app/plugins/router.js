@@ -1,6 +1,6 @@
+const { oidcProvider } = require('../config')
 
-const { oktaEnabled } = require('../config')
-const authRoute = oktaEnabled ? require('../routes/okta') : require('../routes/dev-login')
+const authRoute = require(`../routes/${oidcProvider}-login`)
 
 const routes = [].concat(
   authRoute,
