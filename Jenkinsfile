@@ -11,6 +11,7 @@ def postTestTasks = {
       //sh "node $WORKSPACE/test/contract/publish-contract.js --pactBroker=$pactBrokerURL --pactUsername=$pactUsername --pactPassword=$pactPassword"
       dir('testOutput') {
         echo "Publish pacts to broker"
+        sh "ls"
         def pacts = findFiles glob: "./*.json"
         echo "Found ${pacts.sizee()} pact file(s) to publish"
         for (pact in pacts) {
