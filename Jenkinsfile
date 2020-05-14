@@ -9,14 +9,14 @@ def postTestTasks = {
       // publish pact to broker
       //sh "npm i"
       //sh "node $WORKSPACE/test/contract/publish-contract.js --pactBroker=$pactBrokerURL --pactUsername=$pactUsername --pactPassword=$pactPassword"
-      dir('testOutput') {
+      dir('test-output') {
         echo "Publish pacts to broker"
         sh "ls"
         def pacts = findFiles glob: "./*.json"
         echo "Found ${pacts.sizee()} pact file(s) to publish"
         for (pact in pacts) {
           echo "Publishing ${pact.name} to broker"
-          //sh "curl -v -XPUT -H \"Content-Type: application/json\" --user $pactUsername:$pactPassword -d@testOutput/${pact.name} $pactBrokerURL/pacts/provider/A%20Provider/consumer/A%20Consumer/version/1.0.0+4jvh387gj3"
+          sh "curl -v -XPUT -H \"Content-Type: application/json\" --user $pactUsername:$pactPassword -d@${pact.name} $pactBrokerURL/pacts/provider/A%20Provider/consumer/A%20Consumer/version/1.0.0+4jvh387gj3"
         }
       }
     }
