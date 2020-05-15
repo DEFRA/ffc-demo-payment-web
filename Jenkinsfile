@@ -2,7 +2,7 @@
 
 def postTestTasks = {
   def version = version.getPackageJsonVersion()
-  def commitSha = build.getCommitSha()
+  def commitSha = sh(returnStdout: true, script: "git rev-parse HEAD").trim()
   stage('Publish Pact to broker') {
     withCredentials([
       string(credentialsId: 'pact-broker-url', variable: 'pactBrokerURL'),
