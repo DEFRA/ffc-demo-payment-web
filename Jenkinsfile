@@ -1,6 +1,8 @@
 @Library('defra-library@4') _
 
 def postTestTasks = {
+  def version = version.getPackageJsonVersion()
+  def commitSha = build.getCommitSha()
   stage('Publish Pact to broker') {
     withCredentials([
       string(credentialsId: 'pact-broker-url', variable: 'pactBrokerURL'),
@@ -15,7 +17,8 @@ def postTestTasks = {
         echo "Found ${pacts.size()} pact file(s) to publish"
         for (pact in pacts) {
           echo "Publishing ${pact.name} to broker"
-          sh "curl -k -v -XPUT -H \"Content-Type: application/json\" --user $pactUsername:$pactPassword -d@${pact.name} $pactBrokerURL/pacts/provider/A%20Provider/consumer/A%20Consumer/version/1.0.0+4jvh387gj3"
+          sh "curl -k -v -XPUT -H \"Content-Type: application/json\" --user $pactUsername:$pactPassword -d@${pact.name} $pactBrokerURL/pacts/provider/ffc-demo-payment-service/consumer/ffc-demo-payment-web/version/${version}+${commitSha}"
+          echo "Published ${pact.name} to broker"
         }
       }
     }
