@@ -1,4 +1,4 @@
-const codesWithViews = [403, 404]
+const codesWithViews = [401, 403, 404]
 
 module.exports = {
   plugin: {
