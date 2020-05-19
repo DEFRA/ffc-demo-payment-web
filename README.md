@@ -34,34 +34,29 @@ Default values for production-like deployments are set in the Helm chart and may
 | STATIC_CACHE_TIMEOUT_IN_MILLIS        | timeout in milliseconds for static files  | no       | 900000                |                             |
 | REST_CLIENT_TIMEOUT_IN_MILLIS         | timeout in milliseconds for REST calls    | no       | 2000                  |                             |
 | PAYMENT_SERVICE_URL                   | URL for payment service API               | yes      |                       |                             |
-| OKTA_ENABLED                          | set to true to enable Okta authentication | no       | "true"                |                             |
+| OIDC_PROVIDER                         | set the OIDC provider to use              | no       | dev                   | dev, okta, b2c              |
 | OKTA_DOMAIN                           | Okta domain, i.e. `mysite.okta.com`       | no       |                       |                             |
 | OKTA_CLIENT_ID                        | Client ID of Okta OpenID Connect app      | no       |                       |                             |
 | OKTA_CLIENT_SECRET                    | Client Secret of Okta OpenID Connect app  | no       |                       |                             |
 | OKTA_AUTH_SERVER_ID                   | ID of Okta custom authorisation server    | no       |                       |                             |
+| B2C_CLIENT_ID                         | Client ID of B2C OpenID Connect app       | no       |                       |                             |
+| B2C_CLIENT_SECRET                     | Client Secret of B2C OpenID Connect app   | no       |                       |                             |
+| B2C_URL                               | OAuth URL of B2C OpenID Connect app       | no       |                       |                             |
 | SITE_URL                              | URL of site, i.e. https://mysite.com      | no       |                       |                             |
-
-## Building the project locally
-
-To build the project locally the Docker client must be authenticated against the private Defra container registry to retrieve the parent image.
-An ECR registry provides exact commands for authenticating the Docker client.
-These can be found by selecting a repository and clicking the `View push commands` button.
-
-The environment variable `DOCKER_REGISTRY` must be set to the registry holding the Defra parent image,
-i.e.
-```
-export DOCKER_REGISTRY=registryid.myprivatedockersite.com
-```
 
 ## Running the project locally
 
-The web site can authenticate using [Okta](https://www.okta.com/), or using stubbed authentication for local development. 
-To use the stubbed authentication set `OKTA_ENABLED` to `"false"`
+The web site can authenticate using [Okta](https://www.okta.com/), B2C, or by using stubbed authentication for local development. 
+To use the stubbed authentication set `OIDC_PROVIDER` to `"dev"`.
 
-Okta specific environment variables must be set if `OKTA_ENABLED` is set to `"true"`.
+Okta specific environment variables must be set if `OIDC_PROVIDER` is set to `"okta"`.
 A valid Okta OpenID Connect application is required, and the Okta domain, client ID, Client Secret, Custom Authorisation
 Server ID, and URL of the site must be set in the environment variables
 `OKTA_DOMAIN`, `OKTA_CLIENT_ID`, `OKTA_CLIENT_SECRET`, `OKTA_AUTH_SERVER_ID`, and `SITE_URL` respectively.
+
+B2C specific environment variables must be set if `OIDC_PROVIDER` is set to `"b2c"`.
+A valid B2C OpenID Connect application is required, and the B2C client ID, Client Secret, Oauth URL, and URL of the site
+must be set in the environment variable `B2C_CLIENT_ID`, `B2C_CLIENT_SECRET`, `B2C_URL`, and `SITE_URL` respectively.
 
 ## How to run tests
 
@@ -119,9 +114,6 @@ For the site to render correctly locally `npm run build` must be run on the host
 By default, the start script will build (or rebuild) images so there will rarely be a need to build images manually. However, this can be achieved through the Docker Compose [build](https://docs.docker.com/compose/reference/build/) command:
 
 ```
-# Authenticate with FFC container image registry (requires pre-configured AWS credentials on your machine)
-aws ecr get-login --no-include-email | sh
-
 # Build container images
 docker-compose build
 ```
@@ -222,7 +214,7 @@ where `xx.xx.xx.xx` is the public IP Address of the Ingress Controller.
 
 A detailed description on the build pipeline and PR work flow is available in the [Defra Confluence page](https://eaflood.atlassian.net/wiki/spaces/FFCPD/pages/1281359920/Build+Pipeline+and+PR+Workflow)
 
-## License
+## Licence
 
 THIS INFORMATION IS LICENSED UNDER THE CONDITIONS OF THE OPEN GOVERNMENT LICENCE found at:
 
@@ -232,7 +224,7 @@ The following attribution statement MUST be cited in your products and applicati
 
 > Contains public sector information licensed under the Open Government license v3
 
-### About the license
+### About the licence
 
 The Open Government Licence (OGL) was developed by the Controller of Her Majesty's Stationery Office (HMSO) to enable information providers in the public sector to license the use and re-use of their information under a common open licence.
 
