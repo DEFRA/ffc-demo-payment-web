@@ -3,14 +3,13 @@
 def postTestTasks = {
   def version = version.getPackageJsonVersion()
   def commitSha = sh(returnStdout: true, script: "git rev-parse HEAD").trim()
+  def repoName = build.getRepoName()
+  echo "repo name is $repoName"
   stage('Publish Pact to broker') {
     withCredentials([
       string(credentialsId: 'pact-broker-url', variable: 'pactBrokerURL'),
       usernamePassword(credentialsId: 'pact-broker-credentials', usernameVariable: 'pactUsername', passwordVariable: 'pactPassword')
     ]) {
-      // publish pact to broker
-      //sh "npm i"
-      //sh "node $WORKSPACE/test/contract/publish-contract.js --pactBroker=$pactBrokerURL --pactUsername=$pactUsername --pactPassword=$pactPassword"
       dir('test-output') {
         echo "Publish pacts to broker"
         def pacts = findFiles glob: "*.json"
