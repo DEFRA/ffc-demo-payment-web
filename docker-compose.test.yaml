@@ -17,7 +17,6 @@ services:
       OKTA_CLIENT_ID: placeholderclientid
       OKTA_CLIENT_SECRET: placeholdersecret
       OKTA_AUTH_SERVER_ID: placeholderauthserverid
-      PACT_BROKER: http://localhost:9292
       B2C_CLIENT_ID: b2cplaceholderclientid
       B2C_CLIENT_SECRET: b2cplaceholdersecret
       B2C_URL: b2cplaceholderauthserverid
