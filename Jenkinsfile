@@ -15,7 +15,7 @@ def postTestTasks = {
         def pacts = findFiles glob: "*.json"
         echo "Found ${pacts.size()} pact file(s) to publish"
         for (pact in pacts) {
-          def provider = pact.name.replace("$repoName-", "")
+          def provider = pact.name.replace("$repoName-", "").replace(".json", "")
           echo "Publishing ${pact.name} to broker"
           echo "Provider: $provider"
           //sh "curl -k -v -XPUT -H \"Content-Type: application/json\" --user $pactUsername:$pactPassword -d@${pact.name} $pactBrokerURL/pacts/provider/ffc-demo-payment-service/consumer/ffc-demo-payment-web/version/${version}+${commitSha}"
