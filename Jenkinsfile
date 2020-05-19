@@ -2,7 +2,7 @@
 
 def postTestTasks = {
   def version = version.getPackageJsonVersion()
-  def commitSha = build.getCommitSha() // sh(returnStdout: true, script: "git rev-parse HEAD").trim()
+  def commitSha = utils.getCommitSha()
   def repoName = build.getRepoName()
   echo "repo name is $repoName"
   stage('Publish Pact to broker') {
