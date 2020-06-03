@@ -3,7 +3,7 @@
 def postTestTasks = {
   def version = version.getPackageJsonVersion()
   def commitSha = utils.getCommitSha()
-  def repoName = build.getRepoName()
+  def repoName = utils.getRepoName()
   echo "repo name is $repoName"
   stage('Publish Pact to broker') {
     withCredentials([
