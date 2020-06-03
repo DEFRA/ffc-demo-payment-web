@@ -1,4 +1,4 @@
-@Library('defra-library@add-getRepoName') _
+@Library('defra-library@v-6') _
 
 def postTestTasks = {
   def version = version.getPackageJsonVersion()
