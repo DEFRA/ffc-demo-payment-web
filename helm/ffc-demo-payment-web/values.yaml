@@ -10,7 +10,7 @@ okta: {}
 b2c: {}
 
 containerConfigMap:
-  name: my-config-map
+   name: ffc-demo-payment-web-config-map
 
 service:
   port: 80
