@@ -32,7 +32,7 @@ container:
   restClientTimeoutMillis: 20000
   paymentServiceUrl: http://ffc-demo-payment-service.ffc-demo
   port: 3000
-  cookiePassword:
+  cookiePassword: secret
   siteUrl:
 
 ingress:
