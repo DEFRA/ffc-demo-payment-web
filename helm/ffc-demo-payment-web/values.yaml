@@ -12,6 +12,10 @@ b2c: {}
 containerConfigMap:
    name: ffc-demo-payment-web-config-map
 
+containerSecret:
+  name: ffc-demo-payment-web-container-secret
+  type: Opaque
+
 service:
   port: 80
   type: ClusterIP

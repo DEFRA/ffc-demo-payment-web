@@ -6,17 +6,14 @@ data:
   STATIC_CACHE_TIMEOUT_IN_MILLIS: {{ quote .Values.container.staticCacheTimeoutMillis }}
   REST_CLIENT_TIMEOUT_IN_MILLIS: {{ quote .Values.container.restClientTimeoutMillis }}
   PAYMENT_SERVICE_URL: {{ quote .Values.container.paymentServiceUrl }}
-  COOKIE_PASSWORD: {{ quote .Values.container.cookiePassword }}
   OIDC_PROVIDER: {{ quote .Values.oidcProvider }}
 {{- if .Values.okta }}
   OKTA_DOMAIN: {{ quote .Values.okta.domain }}
   OKTA_CLIENT_ID: {{ quote .Values.okta.clientId }}
-  OKTA_CLIENT_SECRET: {{ quote .Values.okta.clientSecret }}
   OKTA_AUTH_SERVER_ID: {{ quote .Values.okta.authorizationServerId }}
 {{- end }}
 {{- if .Values.b2c }}
   B2C_CLIENT_ID: {{ quote .Values.b2c.clientId }}
-  B2C_CLIENT_SECRET: {{ quote .Values.b2c.clientSecret }}
   B2C_URL: {{ quote .Values.b2c.url }}
 {{- end }}
   SITE_URL:
