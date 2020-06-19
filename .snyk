@@ -4,6 +4,6 @@ version: v1.14.1
 ignore:
   SNYK-JS-HAPIHOEK-548452:
     - '*':
-        reason: Not vulnerable
+        reason: Not vulnerable - the issue only affects uses of the dependency outside of hapi applications
         expires: 2020-12-31T00:00:00.000Z
 patch: {}
