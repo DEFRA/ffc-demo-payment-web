@@ -1,4 +1,4 @@
-@Library('defra-library@v-6') _
+@Library('defra-library@v-7') _
 
 def postTestTasks = {
   def version = version.getPackageJsonVersion()
@@ -24,5 +24,7 @@ def postTestTasks = {
   }
 }
 
-buildNodeJs environment: 'dev',
-  testClosure: postTestTasks
+// buildNodeJs environment: 'dev',
+//   testClosure: postTestTasks
+
+buildNodeJs environment: 'dev'
