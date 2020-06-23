@@ -32,12 +32,12 @@ container:
   restClientTimeoutMillis: 20000
   paymentServiceUrl: http://ffc-demo-payment-service.ffc-demo
   port: 3000
-  cookiePassword: secret
-  siteUrl:
+  paymentWebCookiePassword: secret
+  paymentWebSiteUrl:
 
 ingress:
   class: nginx
-  endpoint: ffc-demo
+  paymentWebEndpoint: ffc-demo
 
 deployment:
   restartPolicy: Always
