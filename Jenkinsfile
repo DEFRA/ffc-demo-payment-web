@@ -24,7 +24,5 @@ def postTestTasks = {
   }
 }
 
-// buildNodeJs environment: 'dev',
-//   testClosure: postTestTasks
-
-buildNodeJs environment: 'dev'
+buildNodeJs environment: 'dev',
+  testClosure: postTestTasks
