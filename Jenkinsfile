@@ -25,4 +25,5 @@ def postTestTasks = {
 }
 
 buildNodeJs environment: 'dev',
-  testClosure: postTestTasks
+// temporarily removing as Pact Broker is not yet accessible form Jenkins in Azure
+  // testClosure: postTestTasks
