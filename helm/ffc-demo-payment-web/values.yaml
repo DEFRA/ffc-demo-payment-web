@@ -6,8 +6,17 @@ workstream: ffc-demo
 
 labels: {}
 oidcProvider: dev
-okta: {}
-b2c: {}
+
+okta:
+  domain:
+  clientId: dummy
+  authorizationServerId: dummy
+  clientSecret: dummy
+
+b2c:
+  url:
+  clientId: dummy
+  clientSecret: dummy
 
 containerConfigMap:
    name: ffc-demo-payment-web-config-map
@@ -32,12 +41,13 @@ container:
   restClientTimeoutMillis: 20000
   paymentServiceUrl: http://ffc-demo-payment-service.ffc-demo
   port: 3000
-  paymentWebCookiePassword: secret
-  paymentWebSiteUrl:
+  cookiePassword: secret
+  siteUrl:
 
 ingress:
   class: nginx
-  paymentWebEndpoint: ffc-demo
+  endpoint: ffc-demo
+  server: example.com
 
 deployment:
   restartPolicy: Always

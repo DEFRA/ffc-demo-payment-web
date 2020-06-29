@@ -7,15 +7,15 @@ data:
   REST_CLIENT_TIMEOUT_IN_MILLIS: {{ quote .Values.container.restClientTimeoutMillis }}
   PAYMENT_SERVICE_URL: {{ quote .Values.container.paymentServiceUrl }}
   OIDC_PROVIDER: {{ quote .Values.oidcProvider }}
-{{- if .Values.okta }}
+{{- if .Values.okta.domain }}
   OKTA_DOMAIN: {{ quote .Values.okta.domain }}
 {{- end }}
-{{- if .Values.b2c }}
+{{- if .Values.b2c.url }}
   B2C_URL: {{ quote .Values.b2c.url }}
 {{- end }}
 {{- if .Values.pr }}
-  SITE_URL: "{{ .Values.container.paymentWebSiteUrl }}-{{ .Values.pr }}.{{ .Values.ingress.server }}"
+  SITE_URL: "{{ .Values.container.siteUrl }}-{{ .Values.pr }}.{{ .Values.ingress.server }}"
 {{- else }}
-  SITE_URL: {{ quote .Values.container.paymentWebSiteUrl }}
+  SITE_URL: {{ quote .Values.container.siteUrl }}
 {{- end }}
 {{- end }}
