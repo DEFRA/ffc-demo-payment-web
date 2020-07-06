@@ -1,4 +1,4 @@
-@Library('defra-library@v-8') _
+@Library('defra-library@psd-477-sonarcloud-netcore') _
 
 def postTestTasks = {
   def version = version.getPackageJsonVersion()
