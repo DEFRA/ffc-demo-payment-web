@@ -1,9 +1,0 @@
-# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.14.1
-# ignores vulnerabilities until expiry date; change duration by modifying expiry date
-ignore:
-  SNYK-JS-HAPIHOEK-548452:
-    - '*':
-        reason: Not vulnerable - the issue only affects uses of the dependency outside of hapi applications
-        expires: 2020-12-31T00:00:00.000Z
-patch: {}
