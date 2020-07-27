@@ -27,6 +27,8 @@ Default values for production-like deployments are set in the Helm chart and may
 | Name                                  | Description                               | Required | Default               | Valid                       |
 |---------------------------------------|-------------------------------------------|:--------:|-----------------------|-----------------------------|
 | NODE_ENV                              | Node environment                          | no       | development           | development,test,production |
+| APPINSIGHTS_INSTRUMENTATIONKEY        | Key for application insight               | no       |                       |                             | App insights only enabled if key is present. Note: Silently fails for invalid key |
+| APPINSIGHTS_CLOUDROLE                 | Role used for filtering metrics           | no       |                       |                             | Set to `ffc-demo-payment-web-local` in docker compose files                               |
 | PORT                                  | Port number                               | no       | 3000                  |                             |
 | COOKIE_PASSWORD                       | password for session cache                | yes      |                       |                             |
 | STATIC_CACHE_TIMEOUT_IN_MILLIS        | timeout in milliseconds for static files  | no       | 900000                |                             |
