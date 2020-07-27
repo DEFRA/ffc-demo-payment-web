@@ -8,6 +8,8 @@ services:
     image: ffc-demo-payment-web
     environment:
       NODE_ENV: development
+      APPINSIGHTS_CLOUDROLE: ffc-demo-payment-web-local
+      APPINSIGHTS_INSTRUMENTATIONKEY: ${APPINSIGHTS_INSTRUMENTATIONKEY}
       OIDC_PROVIDER: dev
       COOKIE_PASSWORD: cookiecookiecookiecookiecookiecookiecookiecookiecookie
       OKTA_DOMAIN: ${OKTA_DOMAIN}

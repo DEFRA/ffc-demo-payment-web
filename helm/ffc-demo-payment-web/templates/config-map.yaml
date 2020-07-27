@@ -1,6 +1,7 @@
 {{- include "ffc-helm-library.container-config-map" (list . "ffc-demo-payment-web.config-map") -}}
 {{- define "ffc-demo-payment-web.config-map" -}}
 data:
+  APPINSIGHTS_CLOUDROLE: {{ quote .Values.name }}
   NODE_ENV: {{ quote .Values.environment }}
   PORT: {{ quote .Values.container.port }}
   STATIC_CACHE_TIMEOUT_IN_MILLIS: {{ quote .Values.container.staticCacheTimeoutMillis }}

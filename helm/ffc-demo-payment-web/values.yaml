@@ -5,6 +5,10 @@ namespace: ffc-demo
 workstream: ffc-demo
 
 labels: {}
+
+appInsights:
+  key:
+
 oidcProvider: dev
 
 okta:
