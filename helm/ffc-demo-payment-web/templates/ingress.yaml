@@ -1,7 +1,7 @@
 {{- if not .Values.ingress.alb }}
 {{- include "ffc-helm-library.ingress" (list . "ffc-demo-payment-web.azure-ingress") -}}
 {{- end }}
-{{- define "ffc-demo-payment-web.ingress" -}}
+{{- define "ffc-demo-payment-web.azure-ingress" -}}
 {{- if not .Values.ingress.alb }}
 metadata:
   annotations:
