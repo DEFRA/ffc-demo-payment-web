@@ -1,3 +1,3 @@
-@Library('defra-library@reduce-scope-of-pact-finding') _
+@Library('defra-library@v-8') _
 
 buildNodeJs environment: 'dev'
