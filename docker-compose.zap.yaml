@@ -5,7 +5,7 @@ services:
     command: npm run start:watch
     build:
       target: development
-    image: ffc-demo-payment-web
+    image: ffc-demo-payment-web-zap-scan
     environment:
       NODE_ENV: test
     volumes:
