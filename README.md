@@ -24,25 +24,25 @@ Values for development are set in the Docker Compose configuration.
 Default values for production-like deployments are set in the Helm chart and may be overridden by build and release pipelines.
 
 
-| Name                                  | Description                               | Required | Default               | Valid                       |
-|---------------------------------------|-------------------------------------------|:--------:|-----------------------|-----------------------------|
-| NODE_ENV                              | Node environment                          | no       | development           | development,test,production |
-| APPINSIGHTS_INSTRUMENTATIONKEY        | Key for application insight               | no       |                       |                             | App insights only enabled if key is present. Note: Silently fails for invalid key |
-| APPINSIGHTS_CLOUDROLE                 | Role used for filtering metrics           | no       |                       |                             | Set to `ffc-demo-payment-web-local` in docker compose files                               |
-| PORT                                  | Port number                               | no       | 3000                  |                             |
-| COOKIE_PASSWORD                       | password for session cache                | yes      |                       |                             |
-| STATIC_CACHE_TIMEOUT_IN_MILLIS        | timeout in milliseconds for static files  | no       | 900000                |                             |
-| REST_CLIENT_TIMEOUT_IN_MILLIS         | timeout in milliseconds for REST calls    | no       | 2000                  |                             |
-| PAYMENT_SERVICE_URL                   | URL for payment service API               | yes      |                       |                             |
-| OIDC_PROVIDER                         | set the OIDC provider to use              | no       | dev                   | dev, okta, b2c              |
-| OKTA_DOMAIN                           | Okta domain, i.e. `mysite.okta.com`       | no       |                       |                             |
-| OKTA_CLIENT_ID                        | Client ID of Okta OpenID Connect app      | no       |                       |                             |
-| OKTA_CLIENT_SECRET                    | Client Secret of Okta OpenID Connect app  | no       |                       |                             |
-| OKTA_AUTH_SERVER_ID                   | ID of Okta custom authorisation server    | no       |                       |                             |
-| B2C_CLIENT_ID                         | Client ID of B2C OpenID Connect app       | no       |                       |                             |
-| B2C_CLIENT_SECRET                     | Client Secret of B2C OpenID Connect app   | no       |                       |                             |
-| B2C_URL                               | OAuth URL of B2C OpenID Connect app       | no       |                       |                             |
-| SITE_URL                              | URL of site, i.e. https://mysite.com      | no       |                       |                             |
+| Name                           | Description                              | Required  | Default     | Valid                         | Notes                                                                             |
+| ----                           | -----------                              | :-------: | -------     | -----                         | -----                                                                             |
+| NODE_ENV                       | Node environment                         | no        | development | development, test, production |                                                                                   |
+| APPINSIGHTS_INSTRUMENTATIONKEY | Key for application insight              | no        |             |                               | App insights only enabled if key is present. Note: Silently fails for invalid key |
+| APPINSIGHTS_CLOUDROLE          | Role used for filtering metrics          | no        |             |                               | Set to `ffc-demo-payment-web-local` in docker compose files                       |
+| PORT                           | Port number                              | no        | 3000        |                               |                                                                                   |
+| COOKIE_PASSWORD                | password for session cache               | yes       |             |                               |                                                                                   |
+| STATIC_CACHE_TIMEOUT_IN_MILLIS | timeout in milliseconds for static files | no        | 900000      |                               |                                                                                   |
+| REST_CLIENT_TIMEOUT_IN_MILLIS  | timeout in milliseconds for REST calls   | no        | 2000        |                               |                                                                                   |
+| PAYMENT_SERVICE_URL            | URL for payment service API              | yes       |             |                               |                                                                                   |
+| OIDC_PROVIDER                  | set the OIDC provider to use             | no        | dev         | dev, okta, b2c                |                                                                                   |
+| OKTA_DOMAIN                    | Okta domain, i.e. `mysite.okta.com`      | no        |             |                               |                                                                                   |
+| OKTA_CLIENT_ID                 | Client ID of Okta OpenID Connect app     | no        |             |                               |                                                                                   |
+| OKTA_CLIENT_SECRET             | Client Secret of Okta OpenID Connect app | no        |             |                               |                                                                                   |
+| OKTA_AUTH_SERVER_ID            | ID of Okta custom authorisation server   | no        |             |                               |                                                                                   |
+| B2C_CLIENT_ID                  | Client ID of B2C OpenID Connect app      | no        |             |                               |                                                                                   |
+| B2C_CLIENT_SECRET              | Client Secret of B2C OpenID Connect app  | no        |             |                               |                                                                                   |
+| B2C_URL                        | OAuth URL of B2C OpenID Connect app      | no        |             |                               |                                                                                   |
+| SITE_URL                       | URL of site, i.e. https://mysite.com     | no        |             |                               |                                                                                   |
 
 ## Running the project locally
 

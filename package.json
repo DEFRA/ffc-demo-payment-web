@@ -10,8 +10,8 @@
   "main": "app/index.js",
   "scripts": {
     "build": "npm run build:css",
-    "build:css": "node-sass --output=app/static/stylesheets --output-style=expanded app/static/stylesheets",
-    "build:css-watch": "node-sass --output=app/static/stylesheets --output-style=expanded --source-map true --watch app/static/stylesheets",
+    "build:css": "sass --load-path=./ app/static/stylesheets",
+    "build:css-watch": "npm run build:css -- --watch",
     "pretest": "standard",
     "test": "jest",
     "test:lint": "standard",
@@ -55,9 +55,9 @@
     "blipp": "^4.0.1",
     "jest": "^26.1.0",
     "jest-junit": "^11.0.1",
-    "node-sass": "^4.14.1",
     "nodemon": "^2.0.4",
     "npm-run-all": "^4.1.5",
+    "sass": "^1.26.11",
     "standard": "^14.3.4"
   },
   "nodemonConfig": {
