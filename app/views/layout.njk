@@ -1,6 +1,7 @@
 {% extends "govuk/template.njk" %}
 
 {% block head %}
+{% include "./tagManager/headContent.njk" %}
   <!--[if !IE 8]><!-->
     <link href="{{ assetPath }}/stylesheets/application.css" rel="stylesheet" />
   <!--<![endif]-->
@@ -24,6 +25,10 @@
     serviceName: serviceName,
     serviceUrl: "/"
   }) }}
+{% endblock %}
+
+{% block bodyStart %}
+{% include "./tagManager/bodyContent.njk" %}
 {% endblock %}
 
 {% block pageTitle %}
