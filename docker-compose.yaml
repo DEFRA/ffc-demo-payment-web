@@ -22,3 +22,4 @@ services:
       SITE_URL: http://localhost:3006
       PAYMENT_SERVICE_URL: http://ffc-demo-payment-service:3004
       PACT_DO_NOT_TRACK: 1
+      GOOGLE_TAG_MANAGER_KEY: GTM-N5QK7RL

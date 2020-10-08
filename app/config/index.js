@@ -10,7 +10,8 @@ const schema = Joi.object({
   restClientTimeoutMillis: Joi.number().default(20 * 1000),
   paymentServiceUrl: Joi.string().uri().required(),
   cookiePassword: Joi.string().required(),
-  oidcProvider: Joi.string().default('dev').lowercase()
+  oidcProvider: Joi.string().default('dev').lowercase(),
+  googleTagManagerKey: Joi.string().default('')
 })
 
 // Build config
@@ -21,7 +22,8 @@ const config = {
   oidcProvider: process.env.OIDC_PROVIDER,
   staticCacheTimeoutMillis: process.env.STATIC_CACHE_TIMEOUT_IN_MILLIS,
   paymentServiceUrl: process.env.PAYMENT_SERVICE_URL,
-  restClientTimeoutMillis: process.env.REST_CLIENT_TIMEOUT_IN_MILLIS
+  restClientTimeoutMillis: process.env.REST_CLIENT_TIMEOUT_IN_MILLIS,
+  googleTagManagerKey: process.env.GOOGLE_TAG_MANAGER_KEY
 }
 
 // Validate config

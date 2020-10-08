@@ -47,6 +47,7 @@ container:
   port: 3000
   cookiePassword: secret
   siteUrl:
+  googleTagManagerKey: GTM-N5QK7RL
 
 ingress:
   class: nginx

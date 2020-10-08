@@ -8,6 +8,7 @@ data:
   REST_CLIENT_TIMEOUT_IN_MILLIS: {{ quote .Values.container.restClientTimeoutMillis }}
   PAYMENT_SERVICE_URL: {{ quote .Values.container.paymentServiceUrl }}
   OIDC_PROVIDER: {{ quote .Values.oidcProvider }}
+  GOOGLE_TAG_MANAGER_KEY: {{ quote .Values.container.googleTagManagerKey}}
 {{- if .Values.okta.domain }}
   OKTA_DOMAIN: {{ quote .Values.okta.domain }}
 {{- end }}

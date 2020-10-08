@@ -36,7 +36,8 @@ module.exports = {
       assetPath: '/static',
       govukAssetPath: '/assets',
       serviceName: 'FFC Demo Payment Service',
-      pageTitle: 'FFC Demo Payment Service - GOV.UK'
+      pageTitle: 'FFC Demo Payment Service - GOV.UK',
+      googleTagManagerKey: config.googleTagManagerKey
     }
   }
 }
