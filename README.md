@@ -14,9 +14,6 @@ Or:
 - Kubernetes
 - Helm
 
-Or:
-- Node 10+
-
 ## Environment variables
 
 The following environment variables are required by the application container.
@@ -141,16 +138,6 @@ docker-compose -f docker-compose.yaml -f docker-compose.override.yaml -f docker-
 ### Deploy to Kubernetes
 
 For production deployments, a helm chart is included in the `.\helm` folder. This service connects to an AMQP 1.0 message broker, using credentials defined in [values.yaml](./helm/ffc-demo-payment-web/values.yaml), which must be made available prior to deployment.
-
-Scripts are provided to test the Helm chart by deploying the service, along with an appropriate message broker, into the current Helm/Kubernetes context.
-
-```
-# Deploy to current Kubernetes context
-scripts/helm/install
-
-# Remove from current Kubernetes context
-scripts/helm/delete
-```
 
 #### Accessing the pod
 
