@@ -21,4 +21,9 @@ services:
       B2C_CLIENT_SECRET: b2cplaceholdersecret
       B2C_URL: b2cplaceholderauthserverid
     volumes:
+      - ./app/:/home/node/app/
+      - ./test/:/home/node/test/
+      - ./jest.config.js:/home/node/jest.config.js
+      - ./jest.setup.js:/home/node/jest.setup.js
+      - ./package.json:/home/node/package.json
       - ./test-output/:/home/node/test-output/
