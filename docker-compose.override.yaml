@@ -7,7 +7,7 @@ services:
   ffc-demo-payment-web:
     build:
       target: development
-    image: ffc-demo-payment-web-development
+    image: ffc-demo-payment-web
     ports:
       - "3006:3000"
       - "9234:9229"

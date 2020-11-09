@@ -6,6 +6,7 @@ services:
       context: .
       target: production
     image: ffc-demo-payment-web
+    container_name: ffc-demo-payment-web
     environment:
       NODE_ENV: development
       APPINSIGHTS_CLOUDROLE: ffc-demo-payment-web-local
