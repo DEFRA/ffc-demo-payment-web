@@ -6,11 +6,10 @@ Digital service mock to view scheduled payments for financial aid in the event a
 
 ## Prerequisites
 
-Either:
 - Docker
 - Docker Compose
 
-Or:
+Optional:
 - Kubernetes
 - Helm
 
