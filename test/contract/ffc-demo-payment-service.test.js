@@ -39,7 +39,7 @@ describe('Schedule contract test', () => {
         },
         body: Matchers.eachLike({
           claimId: Matchers.like('MINE123'),
-          paymentDate: Matchers.iso8601DateTime()
+          paymentDate: Matchers.iso8601DateTimeWithMillis()
         }, { min: 1 })
       }
     })
