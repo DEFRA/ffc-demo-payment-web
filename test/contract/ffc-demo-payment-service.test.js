@@ -47,7 +47,7 @@ describe('Schedule contract test', () => {
     const response = await scheduleService.getAll('token')
     expect(response[0]).toEqual(expect.objectContaining({
       claimId: 'MINE123',
-      paymentDate: new Date(2021, 1, 2)
+      paymentDate: '2015-08-06T16:53:10.123+01:00'
     }))
   })
 
@@ -66,7 +66,7 @@ describe('Schedule contract test', () => {
         },
         body: Matchers.eachLike({
           claimId: Matchers.like('MINE001'),
-          paymentDate: Matchers.iso8601DateTime()
+          paymentDate: Matchers.iso8601DateTimeWithMillis()
         })
       }
     })
@@ -74,7 +74,7 @@ describe('Schedule contract test', () => {
     const [schedule] = await scheduleService.getSchedulesByClaim('MINE001', 'token')
     expect(schedule).toEqual(expect.objectContaining({
       claimId: 'MINE001',
-      paymentDate: '2015-08-06T16:53:10+01:00'
+      paymentDate: '2015-08-06T16:53:10.123+01:00'
     }))
   })
 
