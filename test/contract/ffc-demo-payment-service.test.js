@@ -47,7 +47,7 @@ describe('Schedule contract test', () => {
     const response = await scheduleService.getAll('token')
     expect(response[0]).toEqual(expect.objectContaining({
       claimId: 'MINE123',
-      paymentDate: '2015-08-06T16:53:10+01:00'
+      paymentDate: new Date(2021, 1, 2)
     }))
   })
 
