@@ -62,7 +62,7 @@ deployment:
   imagePullSecret:
   runAsNonRoot: true
   runAsUser: 1000
-  useLinkerd: false
+  useLinkerd: true
 
 readinessProbe:
   path: /healthy
