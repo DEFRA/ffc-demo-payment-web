@@ -45,7 +45,7 @@
     "govuk-frontend": "^3.7.0",
     "jwt-decode": "^2.2.0",
     "moment": "^2.27.0",
-    "nunjucks": "^3.2.2"
+    "nunjucks": "^3.2.3"
   },
   "devDependencies": {
     "@hapi/good": "^9.0.0",
