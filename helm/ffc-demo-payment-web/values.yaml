@@ -34,8 +34,8 @@ service:
   type: ClusterIP
 
 container:
-  requestMemory: 60Mi
-  requestCpu: 60m
+  requestMemory: 5Mi
+  requestCpu: 5m
   limitMemory: 80Mi
   limitCpu: 80m
   imagePullPolicy: IfNotPresent
