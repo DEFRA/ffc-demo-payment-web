@@ -39,8 +39,6 @@ container:
   limitMemory: 80Mi
   limitCpu: 80m
   imagePullPolicy: IfNotPresent
-  readOnlyRootFilesystem: true
-  allowPrivilegeEscalation: false
   staticCacheTimeoutMillis: 54000
   restClientTimeoutMillis: 20000
   paymentServiceUrl: http://ffc-demo-payment-service.ffc-demo
@@ -60,8 +58,6 @@ deployment:
   replicas: 1
   minReadySeconds: 5
   imagePullSecret:
-  runAsNonRoot: true
-  runAsUser: 1000
   useLinkerd: true
 
 readinessProbe:
