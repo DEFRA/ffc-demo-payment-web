@@ -10,3 +10,6 @@ lcov.info
 node_modules
 npm-debug.log
 test-output
+dist
+# Generated views
+_layout.njk

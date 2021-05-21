@@ -1,24 +1,2 @@
-{{- if not .Values.ingress.alb }}
 {{- include "ffc-helm-library.azure-ingress" (list . "ffc-demo-payment-web.ingress") -}}
-{{- end }}
-{{- define "ffc-demo-payment-web.ingress" -}}
-{{- if not .Values.ingress.alb }}
-metadata:
-  annotations:
-    {{- if .Values.auth }}
-    nginx.ingress.kubernetes.io/auth-type: basic
-    nginx.ingress.kubernetes.io/auth-secret: ffc-demo-basic-auth
-    nginx.ingress.kubernetes.io/auth-realm: "Authentication Required - ffc-demo"
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/affinity: "cookie"
-    nginx.ingress.kubernetes.io/session-cookie-name: "route"
-    nginx.ingress.kubernetes.io/session-cookie-expires: "172800"
-    nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      proxy_set_header l5d-dst-override {{.Values.name }}.default.svc.cluster.local:{{ .Values.service.port }};
-      proxy_hide_header l5d-remote-ip;
-      proxy_hide_header l5d-server-id;
-    {{- end }}
-{{- end }}
 {{- end -}}

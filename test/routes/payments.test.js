@@ -28,27 +28,10 @@ describe('Home test', () => {
     await server.initialize()
   })
 
-  test('GET / route redirects for unauthenticated user', async () => {
-    const options = {
-      method: 'GET',
-      url: '/payments'
-    }
-
-    const response = await server.inject(options)
-    expect(response.statusCode).toBe(302)
-  })
-
-  test('GET / route displays payments authenticated user', async () => {
-    const testUserProfile = {
-      username: 'testuser',
-      firstName: 'Testuser',
-      lastName: 'Usertest'
-    }
-
+  test('GET / route displays payments', async () => {
     const homeOptions = {
       method: 'GET',
-      url: '/payments',
-      auth: { strategy: 'session', credentials: { profile: testUserProfile } }
+      url: '/payments'
     }
 
     const homeResponse = await server.inject(homeOptions)

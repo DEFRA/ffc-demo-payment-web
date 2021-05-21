@@ -33,9 +33,8 @@ function createTableDefinition (payments) {
   }
 }
 
-module.exports = function getPaymentsViewModel (name, payments) {
+module.exports = function getPaymentsViewModel (payments) {
   return {
-    name,
     table: createTableDefinition(payments)
   }
 }

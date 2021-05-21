@@ -8,15 +8,9 @@ module.exports = {
   method: 'GET',
   path: '/payments',
   options: {
-    auth: {
-      mode: 'required',
-      strategy: 'session'
-    },
     handler: async (request, h) => {
-      const name = request.auth.credentials.profile.firstName
-      const payments = await service.getAll(request.auth.credentials.token)
-
-      return h.view('payments', getViewModel(name, removeResultsWithNoAmount(payments)))
+      const payments = await service.getAll()
+      return h.view('payments', getViewModel(removeResultsWithNoAmount(payments)))
     }
   }
 }
