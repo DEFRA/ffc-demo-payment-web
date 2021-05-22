@@ -40,7 +40,6 @@ module.exports = [{
       directory: {
         path: [
           'app/dist',
-          'frontend/images',
           'node_modules/govuk-frontend/govuk/assets'
         ]
       }

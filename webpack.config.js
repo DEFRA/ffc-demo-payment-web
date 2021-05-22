@@ -9,7 +9,15 @@ console.log(`Running webpack in ${isDev ? 'development' : 'production'} mode`)
 
 module.exports = {
   entry: {
-    core: './app/frontend/css/index.js'
+    core: [
+      './app/frontend/css/index.js',
+      './app/frontend/images/android-chrome-192x192.png',
+      './app/frontend/images/android-chrome-512x512.png',
+      './app/frontend/images/apple-touch-icon.png',
+      './app/frontend/images/defra-logo-black.png',
+      './app/frontend/images/defra-logo-white.png',
+      './app/frontend/images/favicon.ico'
+    ]
   },
   mode: isDev ? 'development' : 'production',
   module: {
@@ -39,11 +47,12 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(png|svg|jpg|gif|ico)$/,
         use: {
           loader: 'file-loader',
           options: {
-            outputPath: 'images/'
+            outputPath: 'images/',
+            name: '[name].[ext]'
           }
         }
       },
