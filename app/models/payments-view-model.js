@@ -13,7 +13,7 @@ function toRow (payment) {
 
 function createTableDefinition (payments) {
   return {
-    caption: 'Payments',
+    caption: 'Payment schedule',
     firstCellIsHeader: true,
     head: [
       {
