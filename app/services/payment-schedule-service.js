@@ -5,16 +5,13 @@ const wreck = require('@hapi/wreck').defaults({
   json: true
 })
 
-async function getAll (token) {
-  const headers = { authorization: `Bearer ${token}` }
-  const result = await wreck.get(`${config.paymentServiceUrl}/schedule`, { headers })
+async function getAll () {
+  const result = await wreck.get(`${config.paymentServiceUrl}/schedule`)
   return result.payload
 }
 
-async function getSchedulesByClaim (claimId, token) {
-  const headers = { authorization: `Bearer ${token}` }
-  const result = await wreck.get(`${config.paymentServiceUrl}/schedule/${claimId}`, { headers })
-
+async function getSchedulesByClaim (claimId) {
+  const result = await wreck.get(`${config.paymentServiceUrl}/schedule/${claimId}`)
   return result.payload
 }
 

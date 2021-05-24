@@ -9,19 +9,6 @@ labels: {}
 appInsights:
   key:
 
-oidcProvider: dev
-
-okta:
-  domain:
-  clientId: dummy
-  authorizationServerId: dummy
-  clientSecret: dummy
-
-b2c:
-  url:
-  clientId: dummy
-  clientSecret: dummy
-
 containerConfigMap:
    name: ffc-demo-payment-web-config-map
 
@@ -44,12 +31,11 @@ container:
   paymentServiceUrl: http://ffc-demo-payment-service.ffc-demo
   port: 3000
   cookiePassword: secret
-  siteUrl:
   googleTagManagerKey: GTM-N5QK7RL
 
 ingress:
   class: nginx
-  endpoint: ffc-demo
+  endpoint: ffc-demo-payment
   server: example.com
 
 deployment:

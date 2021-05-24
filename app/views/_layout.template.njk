@@ -2,9 +2,11 @@
 
 {% block head %}
 
-  {% include "./tag-manager/head-content.njk" %}
+  {% include "./tag-manager/_head-content.njk" %}
   <!--[if !IE 8]><!-->
-    <link href="{{ assetPath }}/stylesheets/application.css" rel="stylesheet" />
+  <% htmlWebpackPlugin.files.css.forEach(file => { %>
+  <link href="<%= file.replace('../dist/', '/static/') %>" rel="stylesheet">
+  <% }) %>
   <!--<![endif]-->
 
   {# For Internet Explorer 8, you need to compile specific stylesheet #}
@@ -25,7 +27,7 @@
     <div class="govuk-header__logo">
       <a href="#" class="govuk-header__link govuk-header__link--homepage">
         <span class="govuk-header__logotype">
-          <image src="static/images/defra-logo-white.png" height="32"></image>          
+          <image src="{{assetPath}}/images/defra-logo-white.png" height="32"></image>          
         </span>
       </a>
     </div>
@@ -39,7 +41,7 @@
 {% endblock %}
 
 {% block bodyStart %}
-{% include "./tag-manager/body-content.njk" %}
+{% include "./tag-manager/_body-content.njk" %}
 {% endblock %}
 
 {% block pageTitle %}
@@ -65,7 +67,7 @@
           </span>
         </div>
         <div class="govuk-footer__meta-item">
-          <image class="govuk-footer__link" src="static/images/defra-logo-black.png" height="60"></image>
+          <image class="govuk-footer__link" src="{{assetPath}}/images/defra-logo-black.png" height="60"></image>
         </div>
       </div>
     </div>
@@ -74,6 +76,7 @@
 
 {% block bodyEnd %}
   {# Run JavaScript at end of the <body>, to avoid blocking the initial render. #}
-  <script src="/govuk-frontend/govuk/all.js"></script>
-  <script>window.GOVUKFrontend.initAll()</script>
+<% htmlWebpackPlugin.files.js.forEach(file => { %>
+  <script src="<%= file.replace('../dist/', '/static/') %>"></script>
+<% }) %>
 {% endblock %}
