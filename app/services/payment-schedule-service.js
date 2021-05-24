@@ -10,9 +10,8 @@ async function getAll () {
   return result.payload
 }
 
-async function getSchedulesByClaim (claimId, token) {
+async function getSchedulesByClaim (claimId) {
   const result = await wreck.get(`${config.paymentServiceUrl}/schedule/${claimId}`)
-
   return result.payload
 }
 

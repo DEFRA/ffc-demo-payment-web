@@ -71,7 +71,7 @@ describe('Schedule contract test', () => {
       }
     })
 
-    const [schedule] = await scheduleService.getSchedulesByClaim('MINE001', 'token')
+    const [schedule] = await scheduleService.getSchedulesByClaim('MINE001')
     expect(schedule).toEqual(expect.objectContaining({
       claimId: 'MINE001',
       paymentDate: '2015-08-06T16:53:10.123+01:00'
@@ -91,7 +91,7 @@ describe('Schedule contract test', () => {
       }
     })
 
-    await expect(scheduleService.getSchedulesByClaim('NOTMINEWONTFIND', 'token')).rejects.toThrow()
+    await expect(scheduleService.getSchedulesByClaim('NOTMINEWONTFIND')).rejects.toThrow()
   })
 
   afterEach(async () => {
