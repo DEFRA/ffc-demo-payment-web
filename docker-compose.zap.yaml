@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.8'
 
 services:
   ffc-demo-payment-web:
@@ -9,7 +9,7 @@ services:
     environment:
       NODE_ENV: test
     volumes:
-      - ./test-output/:/home/node/test-output/
+      - ./test-output:/home/node/test-output
 
   zap-baseline-scan:
     image: owasp/zap2docker-stable:2.9.0
@@ -17,5 +17,5 @@ services:
     depends_on:
       - ffc-demo-payment-web
     volumes:
-      - ./test-output/:/zap/wrk/test-output/
-      - ./zap/:/zap/wrk/config/
+      - ./test-output:/zap/wrk/test-output
+      - ./zap:/zap/wrk/config

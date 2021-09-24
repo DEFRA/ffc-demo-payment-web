@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.8'
 
 # This override file should be used when running tests in CI pipelines
 # to run tests against app code from the Docker image without binding
@@ -13,8 +13,8 @@ services:
     environment:
       NODE_ENV: test
     volumes:
-      - ./test/:/home/node/test/
+      - ./test:/home/node/test
       - ./jest.config.js:/home/node/jest.config.js
       - ./jest.setup.js:/home/node/jest.setup.js
       - ./package.json:/home/node/package.json
-      - ./test-output/:/home/node/test-output/
+      - ./test-output:/home/node/test-output

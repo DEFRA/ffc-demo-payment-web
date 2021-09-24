@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.8'
 
 # This override file should be used when running this service in isolation
 # to provide dependencies and expose ports for local testing
@@ -12,8 +12,8 @@ services:
       - "3006:3000"
       - "9234:9229"
     volumes:
-      - ./app/:/home/node/app/
-      - ./test/:/home/node/test/
+      - ./app:/home/node/app
+      - ./test:/home/node/test
       - ./jest.config.js:/home/node/jest.config.js
       - ./jest.setup.js:/home/node/jest.setup.js
       - ./package.json:/home/node/package.json
