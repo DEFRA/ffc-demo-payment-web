@@ -7,7 +7,7 @@ workstream: ffc-demo
 labels: {}
 
 appInsights:
-  connectionString
+  connectionString:
 
 containerConfigMap:
    name: ffc-demo-payment-web-config-map
