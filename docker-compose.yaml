@@ -10,7 +10,7 @@ services:
     environment:
       NODE_ENV: development
       APPINSIGHTS_CLOUDROLE: ffc-demo-payment-web-local
-      APPINSIGHTS_INSTRUMENTATIONKEY: ${APPINSIGHTS_INSTRUMENTATIONKEY}
+      APPINSIGHTS_CONNECTIONSTRING: ${APPINSIGHTS_CONNECTIONSTRING}
       COOKIE_PASSWORD: cookiecookiecookiecookiecookiecookiecookiecookiecookie
       PAYMENT_SERVICE_URL: http://ffc-demo-payment-service:3004
       PACT_DO_NOT_TRACK: 1
