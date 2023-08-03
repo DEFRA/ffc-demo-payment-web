@@ -44,7 +44,7 @@
     "@hapi/vision": "6.1.0",
     "@hapi/wreck": "17.0.0",
     "@hapi/yar": "10.1.1",
-    "applicationinsights": "2.3.3",
+    "applicationinsights": "2.7.0",
     "govuk-frontend": "4.4.0",
     "joi": "17.7.0",
     "moment": "2.29.4",
