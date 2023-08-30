@@ -13,7 +13,7 @@
     "build:watch": "webpack --watch",
     "pretest": "npm run test:lint",
     "test": "jest --runInBand --forceExit",
-    "test:integration": "jest --testPathPattern=test/integration",
+    "test:integration": "jest --testPathPattern=test/routes",
     "test:unit": "jest --testPathPattern=test/unit",
     "test:watch": "jest --coverage=false --onlyChanged --watch --runInBand",
     "test:unit-watch": "jest --testPathPattern=test/unit --coverage=false --onlyChanged --watch",

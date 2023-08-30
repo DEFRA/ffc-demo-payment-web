@@ -1,6 +1,5 @@
 const path = require('path')
-const { Pact } = require('@pact-foundation/pact')
-const Matchers = require('@pact-foundation/pact/dsl/matchers')
+const { Pact, Matchers } = require('@pact-foundation/pact')
 let scheduleService
 let provider
 
