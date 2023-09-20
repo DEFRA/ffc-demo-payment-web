@@ -1,4 +1,3 @@
-
 const config = require('../config')
 const wreck = require('@hapi/wreck').defaults({
   timeout: config.restClientTimeoutMillis,
