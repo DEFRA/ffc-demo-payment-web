@@ -1,4 +1,4 @@
-{{- include "ffc-helm-library.cluster-ip-service" (list . "ffc-demo-payment-web.cluster-ip-service") -}}
+{{- include "adp-helm-library.cluster-ip-service" (list . "ffc-demo-payment-web.cluster-ip-service") -}}
 {{- define "ffc-demo-payment-web.cluster-ip-service" -}}
 {{- end -}}
 
