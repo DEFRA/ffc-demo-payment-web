@@ -1,4 +1,4 @@
-{{- include "ffc-helm-library.container-config-map" (list . "ffc-demo-payment-web.config-map") -}}
+{{- include "adp-helm-library.container-config-map" (list . "ffc-demo-payment-web.config-map") -}}
 {{- define "ffc-demo-payment-web.config-map" -}}
 data:
   APPINSIGHTS_CLOUDROLE: {{ quote .Values.name }}
