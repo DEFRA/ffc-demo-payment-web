@@ -9,22 +9,15 @@ labels: {}
 appInsights:
   connectionString:
 
-containerConfigMap:
-   name: ffc-demo-payment-web-config-map
-
-containerSecret:
-  name: ffc-demo-payment-web-container-secret
-  type: Opaque
-
 service:
   port: 80
   type: ClusterIP
 
 container:
-  requestMemory: 5Mi
-  requestCpu: 5m
-  limitMemory: 80Mi
-  limitCpu: 80m
+  requestMemory: 20Mi
+  requestCpu: 20m
+  limitMemory: 100Mi
+  limitCpu: 100m
   imagePullPolicy: IfNotPresent
   staticCacheTimeoutMillis: 54000
   restClientTimeoutMillis: 20000
@@ -44,7 +37,6 @@ deployment:
   replicas: 1
   minReadySeconds: 5
   imagePullSecret:
-  useLinkerd: true
 
 readinessProbe:
   path: /healthy
@@ -64,3 +56,25 @@ aadWorkloadIdentity: true
 
 serviceAccount:
   name: ffc-demo
+  roleArn: true
+
+containerConfigMap:
+  name: 'ffc-demo-payment-web-config-map'
+  configServiceUrl: 'https://sndadpinfac1401.azconfig.io'
+  auth:
+    workloadIdentity:
+      clientId: e9badf28-ce66-4dd3-97e1-e28bfb1da26b
+  keyValues:
+    labelFilter: 'ffc-demo-payment-web'
+    refresh:
+      interval: 2m
+      monitorKey: 'Sentinel'
+      monitorLabel: 'ffc-demo-payment-web'
+    keyVaults:
+      secretName: ffc-demo-payment-web-container-secret
+      refresh:
+        interval: 2m
+
+managedIdPrefix: sndadpinfmid1401
+userAssignedIdentity:
+  managedIdName: ffc-demo-services
