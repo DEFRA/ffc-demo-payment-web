@@ -3,10 +3,15 @@ parameters:
     displayName: "Deploy from Feature Branch"
     type: boolean
     default: false
+  - name: deployConfigOnly
+    displayName: "Deploy App Config"
+    type: boolean
+    default: false    
 pr:
   branches:
     include:
       - main
+      - master
   paths:
     exclude:
       - test-output/*
@@ -31,13 +36,14 @@ resources:
       name: DEFRA/adp-pipeline-common
       endpoint: DEFRA
       type: github
-      ref: refs/heads/main
+      ref: main
 
 extends:
   template: /pipelines/common-app-build.yaml@DEFRA-ADPPipelineCommon
   parameters:
-    projectName: "FFCDemoPaymentWeb"
+    serviceName: "ffc-demo-payment-web"
     deployFromFeature: ${{ parameters.deployFromFeature }}
+    deployConfigOnly: ${{ parameters.deployConfigOnly }}
     appBuildConfig:
       appFrameworkType: "nodejs"  
       projectPath: "./package.json"
@@ -46,3 +52,5 @@ extends:
     appTestConfig:
       testFilePath: "./docker-compose.test.yaml"
       snykTestFilePath: "./docker-compose.snyk.yaml"
+    appDeployConfig:
+      filepath: "./appConfig"  
