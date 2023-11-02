@@ -51,7 +51,7 @@
         },
         {
             "key": "COOKIE_PASSWORD",
-            "value": "{{resourceid}}/{{servicename}}-COOKIE-PASSWORD",
+            "value": "{\"{{resourceid}}/{{servicename}}-COOKIE-PASSWORD\"}",
             "label": "{{serviceName}}",
             "content_type": "{{keyVaultContentType}}",
             "tags": {}
