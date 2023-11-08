@@ -75,6 +75,9 @@ containerConfigMap:
       refresh:
         interval: 2m
 
+containerSecret:
+  name: ffc-demo-payment-web-container-secret
+
 managedIdPrefix: 
 userAssignedIdentity:
   managedIdName: 
