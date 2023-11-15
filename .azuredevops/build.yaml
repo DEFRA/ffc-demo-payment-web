@@ -53,4 +53,9 @@ extends:
       testFilePath: "./docker-compose.test.yaml"
       snykTestFilePath: "./docker-compose.snyk.yaml"
     appDeployConfig:
-      filepath: "./appConfig"  
+      filepath: "./appConfig" 
+      variableGroups: 
+        - ffc-demo-payment-web-snd1
+      variables:
+        - ffc-demo-payment-web-APPINSIGHTS-CONNECTIONSTRING 
+        - ffc-demo-payment-web-COOKIE-PASSWORD 
