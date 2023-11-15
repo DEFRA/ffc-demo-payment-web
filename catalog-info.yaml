@@ -1,0 +1,26 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "ffc-demo-payment-web"
+  description: |
+    Digital service mock to view scheduled payments for financial aid in the event a property subsides into mine shaft. This is the web front end for the application.
+  annotations:
+    github.com/project-slug: DEFRA/ffc-demo-payment-web
+    dev.azure.com/project: DEFRA-FFC
+    dev.azure.com/build-definition: DEFRA.ffc-demo-payment-web
+    sonarqube.org/project-key: adp-ffc-demo-payment-web
+  tags:
+    - node
+    - service-bus
+    - redis
+    - internal
+    - front-end
+spec:
+  type: frontend
+  lifecycle: beta
+  owner: "group:default/fcp-payments"
+  system: ffc-demo-service
+  consumesApis:
+    - "api:default/ffc-payments-api"
+    - "api:default/ffc-payments-async-api"
+    
