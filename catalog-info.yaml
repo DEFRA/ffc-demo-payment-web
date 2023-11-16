@@ -18,9 +18,8 @@ metadata:
 spec:
   type: frontend
   lifecycle: beta
-  owner: "group:default/fcp-payments"
-  system: ffc-demo-service
+  owner: "group:default/fcp-demo"
+  system: fcp-demo-service
   consumesApis:
-    - "api:default/ffc-payments-api"
-    - "api:default/ffc-payments-async-api"
+    - "api:default/fcp-payments-api"
     
