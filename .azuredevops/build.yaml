@@ -56,6 +56,8 @@ extends:
       filepath: "./appConfig" 
       variableGroups: 
         - ffc-demo-payment-web-snd1
+        - ffc-demo-payment-web-snd2
+        - ffc-demo-payment-web-snd3
       variables:
         - ffc-demo-payment-web-APPINSIGHTS-CONNECTIONSTRING 
         - ffc-demo-payment-web-COOKIE-PASSWORD 
