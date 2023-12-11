@@ -1,0 +1,6 @@
+site_name: Documentation
+nav:
+  - Home: docs/index.md
+  - ReadMe: README.md
+plugins:
+  - techdocs-core
