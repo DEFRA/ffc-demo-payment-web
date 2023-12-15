@@ -46,10 +46,9 @@ describe('Config', () => {
   })
 
   test('should throw validation error', () => {
-    const mockValidate = jest.fn().mockReturnValue({ error: "error", value: {} })
+    const mockValidate = jest.fn().mockReturnValue({ error: 'error', value: {} })
     joi.object = jest.fn().mockReturnValue({ validate: mockValidate })
 
     require('../../../app/config/index')
-
   })
 })

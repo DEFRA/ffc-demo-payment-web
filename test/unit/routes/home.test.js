@@ -1,14 +1,14 @@
-const home = require("../../../app/routes/home");
+const home = require('../../../app/routes/home')
 
-describe("GET /", () => {
+describe('GET /', () => {
   test('should return 200 with "ok"', () => {
-    const mockRequest = {};
+    const mockRequest = {}
     const mockH = {
       view: jest.fn()
-    };
+    }
 
-    home.options.handler(mockRequest, mockH);
+    home.options.handler(mockRequest, mockH)
 
-    expect(mockH.view).toHaveBeenCalled();
-  });
-});
+    expect(mockH.view).toHaveBeenCalled()
+  })
+})
