@@ -1,15 +1,8 @@
 module.exports = {
   collectCoverage: true,
-  collectCoverageFrom: [
-    '**/*.js',
-    '!**/*.test.js'
-  ],
+  collectCoverageFrom: ['**/*.js', '!**/*.test.js'],
   coverageDirectory: 'test-output',
-  coverageReporters: [
-    'text-summary',
-    'cobertura',
-    'lcov'
-  ],
+  coverageReporters: ['text-summary', 'cobertura', 'lcov'],
   coveragePathIgnorePatterns: [
     '<rootDir>/node_modules/',
     '<rootDir>/app/dist/',
@@ -18,12 +11,9 @@ module.exports = {
     '<rootDir>/jest.config.js',
     '<rootDir>/jest.setup.js',
     '<rootDir>/app/frontend/css/index.js',
-    '<rootDir>/app/index.js',
-    '<rootDir>/app/plugins/views.js'
+    '<rootDir>/webpack.config.js'
   ],
-  modulePathIgnorePatterns: [
-    'node_modules'
-  ],
+  modulePathIgnorePatterns: ['node_modules'],
   reporters: [
     'default',
     [
