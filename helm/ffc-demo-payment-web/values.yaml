@@ -14,10 +14,11 @@ service:
   type: ClusterIP
 
 container:
-  requestMemory: 20Mi
-  requestCpu: 20m
-  limitMemory: 100Mi
-  limitCpu: 100m
+  memCpuTier: CUSTOM
+  requestMemory: 60Mi
+  requestCpu: 60m
+  limitMemory: 210Mi
+  limitCpu: 410m
   imagePullPolicy: IfNotPresent
   staticCacheTimeoutMillis: 54000
   restClientTimeoutMillis: 20000
