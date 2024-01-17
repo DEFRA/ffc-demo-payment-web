@@ -61,6 +61,7 @@ extends:
         - ffc-demo-payment-web-snd3
         - ffc-demo-payment-web-dev1
         - ffc-demo-payment-web-tst1
+        - ffc-demo-payment-web-pre1
       variables:
         - ffc-demo-payment-web-APPINSIGHTS-CONNECTIONSTRING 
         - ffc-demo-payment-web-COOKIE-PASSWORD 
