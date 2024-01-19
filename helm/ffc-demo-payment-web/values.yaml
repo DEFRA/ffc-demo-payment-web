@@ -1,27 +1,12 @@
-environment: development
 image: ffc-demo-payment-web
 name: ffc-demo-payment-web
 namespace: ffc-demo
-workstream: ffc-demo
 
 labels: {}
 
-appInsights:
-  connectionString:
-
-service:
-  port: 80
-  type: ClusterIP
-
 container:
   memCpuTier: M
-  imagePullPolicy: IfNotPresent
-  staticCacheTimeoutMillis: 54000
-  restClientTimeoutMillis: 20000
-  paymentServiceUrl: http://ffc-demo-payment-service.ffc-demo
   port: 3000
-  cookiePassword: secret
-  googleTagManagerKey: GTM-N5QK7RL
 
 ingress:
   class: nginx
@@ -29,11 +14,8 @@ ingress:
   server: example.com
 
 deployment:
-  restartPolicy: Always
   priorityClassName: low
-  replicas: 1
   minReadySeconds: 5
-  imagePullSecret:
 
 readinessProbe:
   path: /healthy
