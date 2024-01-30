@@ -7,7 +7,7 @@ metadata:
   annotations:
     github.com/project-slug: DEFRA/ffc-demo-payment-web
     dev.azure.com/project: DEFRA-FFC
-    dev.azure.com/build-definition: DEFRA.ffc-demo-payment-web
+    dev.azure.com/build-definition: ffc-demo-payment-web
     sonarqube.org/project-key: adp-ffc-demo-payment-web
     backstage.io/techdocs-ref: dir:.
   tags:
