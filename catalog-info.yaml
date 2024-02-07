@@ -11,6 +11,7 @@ metadata:
     sonarqube.org/project-key: adp-ffc-demo-payment-web
     backstage.io/techdocs-ref: dir:.
     grafana/dashboard-selector: "folderTitle == 'Managed Prometheus'"
+    backstage.io/kubernetes-id: ffc-demo-payment-web
   tags:
     - node
     - service-bus
