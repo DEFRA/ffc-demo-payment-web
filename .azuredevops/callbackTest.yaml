@@ -1,0 +1,9 @@
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+  - stage: TestStage
+    jobs:
+      - job: TestJob
+        steps:
+          - script: echo "hello, dev world !!!" 
