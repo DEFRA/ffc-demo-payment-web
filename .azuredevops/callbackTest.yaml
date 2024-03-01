@@ -5,5 +5,14 @@ stages:
   - stage: TestStage
     jobs:
       - job: TestJob
+        pool: server
+        timeoutInMinutes: 10
         steps:
-          - script: echo "hello, dev world !!!" 
+              
+          - task: AzureFunction@1
+            inputs:
+              function: 'https://aatestfuncapp.azurewebsites.net/api/callBackTest'
+              key: 'IsoFPtiYh5hlH06-3xT_B0xDqq259RMf2I-0pxN6uY9KAzFuVege8g=='
+              method: 'POST'
+              body: '{ "Content-Type":"application/json" }'
+              waitForCompletion: 'true'
