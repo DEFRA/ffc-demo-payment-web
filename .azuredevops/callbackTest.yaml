@@ -3,6 +3,9 @@ trigger: none
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+- group: aa-test-callback
+
 stages:
   - stage: TestStage
     jobs:
@@ -18,3 +21,5 @@ stages:
               method: 'POST'
               body: '{ "Content-Type":"application/json" }'
               waitForCompletion: 'true'
+              
+        
