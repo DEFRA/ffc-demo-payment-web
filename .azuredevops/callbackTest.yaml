@@ -12,7 +12,7 @@ stages:
           - task: AzureFunction@1
             inputs:
               function: 'https://aatestfuncapp.azurewebsites.net/api/callBackTest'
-              key: 'IsoFPtiYh5hlH06-3xT_B0xDqq259RMf2I-0pxN6uY9KAzFuVege8g=='
+              key: '$(callBackKey)'
               method: 'POST'
               body: '{ "Content-Type":"application/json" }'
               waitForCompletion: 'true'
