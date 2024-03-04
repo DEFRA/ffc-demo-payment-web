@@ -19,5 +19,5 @@ stages:
               function: 'https://aatestfuncapp.azurewebsites.net/api/callBackTest'
               key: '$(callBackKey)'
               method: 'POST'
-              body: { "Content-Type":"application/json" }
+              body: '{ "Content-Type":"application/json" }'
               waitForCompletion: 'true'
