@@ -1,7 +1,7 @@
 trigger: none
 
-pool:
-  vmImage: 'ubuntu-latest'
+# pool:
+#   vmImage: 'ubuntu-latest'
 
 variables:
 - group: aa-test-callback
@@ -11,7 +11,7 @@ stages:
     jobs:
       - job: TestJob
         pool: server
-        timeoutInMinutes: 10
+        timeoutInMinutes: 9
         steps:
               
           - task: AzureFunction@1
@@ -19,5 +19,10 @@ stages:
               function: 'https://aatestfuncapp.azurewebsites.net/api/callBackTest'
               key: '$(callBackKey)'
               method: 'POST'
-              body: '{ "Content-Type":"application/json" }'
+              body: |
+                '{
+                "Content-Type":"application/json",
+                "helmReleaseName": "ffc-demo-web-infra-post-deploy",
+                "helmReleaseVersion": "4.32.30"  
+                }'
               waitForCompletion: 'true'
