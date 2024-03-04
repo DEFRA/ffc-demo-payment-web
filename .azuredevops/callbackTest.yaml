@@ -25,4 +25,4 @@ stages:
                 "helmReleaseName": "ffc-demo-web-infra-post-deploy",
                 "helmReleaseVersion": "4.32.30"  
                 }'
-              waitForCompletion: 'true'
+              waitForCompletion: true
