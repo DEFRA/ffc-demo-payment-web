@@ -19,10 +19,4 @@ stages:
               function: 'https://aatestfuncapp.azurewebsites.net/api/callBackTest'
               key: '$(callBackKey)'
               method: 'POST'
-              body: |
-                '{
-                "Content-Type":"application/json",
-                "helmReleaseName": "ffc-demo-web-infra-post-deploy",
-                "helmReleaseVersion": "4.32.30"  
-                }'
               waitForCompletion: 'true'
