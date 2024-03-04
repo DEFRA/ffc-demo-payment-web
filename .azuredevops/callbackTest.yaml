@@ -14,7 +14,7 @@ stages:
         timeoutInMinutes: 10
         steps:
               
-          - task: AzureFunction@1
+          - task: AzureFunction@0
             inputs:
               function: 'https://aatestfuncapp.azurewebsites.net/api/callBackTest'
               key: '$(callBackKey)'
