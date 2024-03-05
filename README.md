@@ -1,8 +1,8 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/DEFRA/ffc-demo-payment-web/badge.svg?targetFile=package.json)](https://snyk.io/test/github/DEFRA/ffc-demo-payment-web?targetFile=package.json)
 
-# FFC Demo Payment Service
+# FFC Demo Payment Web
 
-Digital service mock to view scheduled payments for financial aid in the event a property subsides into mine shaft.  This is the web front end for the application.
+Digital service mock to view scheduled payments for financial aid in the event a property subsides into mine shaft. This is the web front end for the application.
 
 ## Prerequisites
 
@@ -64,7 +64,13 @@ Primarily this will be run during CI. It can also be run locally via the
 
 The application is designed to run in containerised environments, using Docker Compose in development and Kubernetes in production.
 
-- A Helm chart is provided for production deployments to Kubernetes.
+### Deploy to Kubernetes
+
+For production deployments, 2 helm charts are included in the `.\helm` folder.
+- `ffc-demo-payment-service-infra` for Application infrastructure deployment (servicebus queues, topics, storage accounts) using [`adp-aso-helm-library`](https://github.com/DEFRA/adp-aso-helm-library)
+- `ffc-demo-payment-service` for Application deployment using [`adp-helm-library`](https://github.com/DEFRA/adp-helm-library)
+
+These helm charts take developer inputs from [values.yaml](/helm/ffc-demo-payment-service/values.yaml) and [values.yaml](/helm/ffc-demo-payment-service-infra/values.yaml). On running the [`CI pipeline`](.azuredevops/build.yaml) the images and helm charts are built and published to environment level Azure Container Registries.
 
 ### Build container image
 
@@ -143,9 +149,15 @@ configured to receive at the below end points.
 Readiness: `/healthy`
 Liveness: `/healthz`
 
-## CI pipeline
+## Build Pipeline
 
-This service uses the [FFC CI pipeline](https://github.com/DEFRA/ffc-jenkins-pipeline-library)
+The [CI Pipeline](.azuredevops/build.yaml) does the following
+- The application is validated
+- The application is tested
+- The application is built into deployable artifacts (images and helm charts)
+- Pushing the artifacts to Azure Container Registry
+
+A detailed description on the build pipeline [wiki page](https://github.com/DEFRA/ado-pipeline-common/blob/main/docs/AppBuildAndDeploy.md) 
 
 ## Licence
 
