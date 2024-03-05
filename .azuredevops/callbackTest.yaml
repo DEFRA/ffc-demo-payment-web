@@ -11,12 +11,12 @@ stages:
     jobs:
       - job: TestJob
         pool: server
-        timeoutInMinutes: 10
+        timeoutInMinutes: 2
         steps:
               
           - task: AzureFunction@1
             inputs:
-              function: 'https://aatestfuncapp.azurewebsites.net/api/callBackTest'
+              function: 'https://adopipelineasyncfuncpoc.azurewebsites.net/api/AdoCallBack'
               key: '$(callBackKey)'
               method: 'POST'
               body: |
