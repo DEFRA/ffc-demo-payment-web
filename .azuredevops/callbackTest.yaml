@@ -11,7 +11,7 @@ stages:
     jobs:
       - job: TestJob
         pool: server
-        timeoutInMinutes: 2
+        timeoutInMinutes: 10
         steps:
               
           - task: AzureFunction@1
