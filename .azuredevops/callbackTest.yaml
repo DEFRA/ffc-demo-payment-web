@@ -16,7 +16,8 @@ stages:
               
           - task: AzureFunction@1
             inputs:
-              function: 'https://adopipelineasyncfuncpoc.azurewebsites.net/api/AdoCallBack'
+              # function: 'https://adopipelineasyncfuncpoc.azurewebsites.net/api/AdoCallBack'
+              function: 'https://sndadpinffa1401aa.azurewebsites.net/api/HttpTrigger1'
               key: '$(callBackKey)'
               method: 'POST'
               body: |
