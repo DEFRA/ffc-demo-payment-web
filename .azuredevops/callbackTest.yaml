@@ -19,7 +19,7 @@ stages:
               # function: 'https://adopipelineasyncfuncpoc.azurewebsites.net/api/AdoCallBack'
               # function: 'https://sndadpinffa1401aa.azurewebsites.net/api/HttpTrigger1'
               # function: 'https://github.com/DEFRA/ffc-demo-payment-web/blob/aa/deployToSnd1/.azuredevops/callbackTest.yaml'
-              function: 'https://adp-flux-api--eg318au.nicebeach-ef765564.uksouth.azurecontainerapps.io/api/AdoTask'
+              function: 'https://adp-flux-api--uabepet.nicebeach-ef765564.uksouth.azurecontainerapps.io/api/AdoTask'
               key: '$(callBackKey)'
               method: 'POST'
               body: |
