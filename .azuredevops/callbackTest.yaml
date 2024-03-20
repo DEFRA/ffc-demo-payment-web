@@ -24,7 +24,7 @@ stages:
               method: 'POST'
               body: |
                 '{
-                "serviceName": "ffc-demo-web"
+                "serviceName": "ffc-demo-web",
                 "helmReleaseName": "ffc-demo-web",
                 "helmReleaseVersion": "4.32.30",
                 "environment": "SND1"
