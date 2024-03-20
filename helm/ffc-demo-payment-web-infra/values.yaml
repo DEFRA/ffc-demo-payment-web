@@ -1,4 +1,4 @@
 namespace: ffc-demo 
 
 namespaceQueues:
-  - name: commit3
+  - name: commit4
