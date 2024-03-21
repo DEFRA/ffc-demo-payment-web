@@ -1,4 +1,1 @@
-namespace: ffc-demo 
-
-namespaceQueues:
-  - name: commit6
+namespace: ffc-demo
