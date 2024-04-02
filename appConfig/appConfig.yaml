@@ -5,7 +5,7 @@
 - key: REST_CLIENT_TIMEOUT_IN_MILLIS
   value: "20000"
 - key: STATIC_CACHE_TIMEOUT_IN_MILLIS
-  value: "60000"
+  value: "54000"
 - key: APPINSIGHTS_CLOUDROLE
   value: "{{serviceName}}"
 - key: PAYMENT_SERVICE_URL
