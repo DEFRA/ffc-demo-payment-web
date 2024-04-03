@@ -6,7 +6,7 @@ parameters:
   - name: deployConfigOnly
     displayName: "Deploy App Config"
     type: boolean
-    default: false    
+    default: false
 pr:
   branches:
     include:
@@ -36,7 +36,7 @@ resources:
       name: DEFRA/adp-pipeline-common
       endpoint: DEFRA
       type: github
-      ref: refs/heads/main
+      ref: main
 
 extends:
   template: /pipelines/common-app-build.yaml@DEFRA-ADPPipelineCommon
@@ -45,6 +45,7 @@ extends:
     serviceName: "ffc-demo-payment-web"
     deployFromFeature: ${{ parameters.deployFromFeature }}
     deployConfigOnly: ${{ parameters.deployConfigOnly }}
+    includePlatformEnvs: true
     appBuildConfig:
       appFrameworkType: "nodejs"  
       projectPath: "./package.json"
