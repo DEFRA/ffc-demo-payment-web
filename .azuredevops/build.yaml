@@ -36,7 +36,7 @@ resources:
       name: DEFRA/adp-pipeline-common
       endpoint: DEFRA
       type: github
-      ref: main
+      ref: aa/addSND4environmentForDemoServices
 
 extends:
   template: /pipelines/common-app-build.yaml@DEFRA-ADPPipelineCommon
@@ -46,6 +46,7 @@ extends:
     deployFromFeature: ${{ parameters.deployFromFeature }}
     deployConfigOnly: ${{ parameters.deployConfigOnly }}
     includePlatformEnvs: true
+    teamName: "ffc-demo"
     appBuildConfig:
       appFrameworkType: "nodejs"  
       projectPath: "./package.json"
