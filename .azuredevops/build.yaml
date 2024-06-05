@@ -36,16 +36,16 @@ resources:
       name: DEFRA/adp-pipeline-common
       endpoint: DEFRA
       type: github
-      ref: main
+      ref: refs/tags/1.0.0-latest 
 
 extends:
   template: /pipelines/common-app-build.yaml@DEFRA-ADPPipelineCommon
   parameters:
-    programmeName: "ffc"
+    teamName: "fcp-demo"
     serviceName: "ffc-demo-payment-web"
     deployFromFeature: ${{ parameters.deployFromFeature }}
     deployConfigOnly: ${{ parameters.deployConfigOnly }}
-    includePlatformEnvs: true
+    includePlatformEnvs: false
     appBuildConfig:
       appFrameworkType: "nodejs"  
       projectPath: "./package.json"
