@@ -36,7 +36,7 @@ resources:
       name: DEFRA/adp-pipeline-common
       endpoint: DEFRA
       type: github
-      ref: refs/tags/1.0.0-latest 
+      ref: kb/flux-deploy-perf # refs/tags/1.0.0-latest 
 
 extends:
   template: /pipelines/common-app-build.yaml@DEFRA-ADPPipelineCommon
@@ -45,7 +45,7 @@ extends:
     serviceName: "ffc-demo-payment-web"
     deployFromFeature: ${{ parameters.deployFromFeature }}
     deployConfigOnly: ${{ parameters.deployConfigOnly }}
-    includePlatformEnvs: false
+    includePlatformEnvs: true
     appBuildConfig:
       appFrameworkType: "nodejs"  
       projectPath: "./package.json"
