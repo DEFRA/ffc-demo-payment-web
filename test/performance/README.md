@@ -6,7 +6,7 @@ The framework is based upon (jmeter)[https://jmeter.apache.org/], and utilises a
 
 ## Requirements
 
-- Docker Desktop 2.2.0.3 (42716) or higher
+- Docker Desktop 4.16.09 or higher
 - (jmeter v5.5)[https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.5.tgz] (for local running)
 
 ## How to run the tests
