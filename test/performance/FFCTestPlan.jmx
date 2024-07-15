@@ -6,17 +6,15 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
-      <boolProp name="TestPlan.functional_mode">false</boolProp>
-      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
-        <stringProp name="ThreadGroup.num_threads">${numberOfUsers}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${rampUpPeriod}]</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${noThreads}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${rampUp}]</stringProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">${loopCount}</stringProp>
+          <stringProp name="LoopController.loops">${lCount}</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
       </ThreadGroup>
@@ -29,28 +27,28 @@
               <stringProp name="Argument.desc">The filename of the JMeter Test configuration file. Values are jmeterConfig.csv, jmeterConfig-adp-aks.csv</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
-            <elementProp name="numberOfUsers" elementType="Argument">
-              <stringProp name="Argument.name">numberOfUsers</stringProp>
-              <stringProp name="Argument.value">${__P(numberOfUsers,2)}</stringProp>
+            <elementProp name="noThreads" elementType="Argument">
+              <stringProp name="Argument.name">noThreads</stringProp>
+              <stringProp name="Argument.value">${__P(noThreads,5)}</stringProp>
               <stringProp name="Argument.desc">The number of virtual/concurrent users</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
-            <elementProp name="loopCount" elementType="Argument">
-              <stringProp name="Argument.name">loopCount</stringProp>
-              <stringProp name="Argument.value">${__P(loopCount,2)}</stringProp>
+            <elementProp name="lCount" elementType="Argument">
+              <stringProp name="Argument.name">lCount</stringProp>
+              <stringProp name="Argument.value">${__P(lCount,1)}</stringProp>
               <stringProp name="Argument.desc">The number of loops per user</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
-            <elementProp name="rampUpPeriod" elementType="Argument">
-              <stringProp name="Argument.name">rampUpPeriod</stringProp>
-              <stringProp name="Argument.value">${__P(rampUpPeriod,30)}</stringProp>
+            <elementProp name="rampUp" elementType="Argument">
+              <stringProp name="Argument.name">rampUp</stringProp>
+              <stringProp name="Argument.value">${__P(rampUp,1)}</stringProp>
               <stringProp name="Argument.desc">The ramp up period in (seconds)</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
           </collectionProp>
         </Arguments>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
           <stringProp name="delimiter">;</stringProp>
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="filename">${configFilename}</stringProp>
@@ -62,18 +60,18 @@
           <stringProp name="variableNames">protocol,server,port</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager">
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
           <collectionProp name="CookieManager.cookies"/>
           <boolProp name="CookieManager.clearEachIteration">false</boolProp>
           <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
         </CookieManager>
         <hashTree/>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Transaction Controller">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Transaction Controller" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="home-page">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="home-page" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${server}</stringProp>
             <stringProp name="HTTPSampler.port">${port}</stringProp>
@@ -129,7 +127,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/payments">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/payments" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${server}</stringProp>
             <stringProp name="HTTPSampler.port">${port}</stringProp>
@@ -185,7 +183,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults">
+          <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.path">${protocol}://${server}:${port}/</stringProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
