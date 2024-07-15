@@ -10,7 +10,7 @@ services:
       - ./test-output:/home/node/test-output
 
   zap-baseline-scan:
-    image: softwaresecurityproject/zap-bare:2.15.0
+    image: softwaresecurityproject/zap-bare:2.14.0
     command: zap.sh -cmd -quickurl http://ffc-demo-payment-web:3000 -zapit http://ffc-demo-payment-web:3000 -configfile config/zap.conf -quickout test-output/zap-report.html -silent -quickprogress
     depends_on:
       - ffc-demo-payment-web
