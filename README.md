@@ -103,14 +103,14 @@ docker-compose -f docker-compose.yaml -f docker-compose.override.yaml -f docker-
 
 The service is exposed via a Kubernetes ingress, which requires an ingress controller to be running on the cluster. For example, the NGINX Ingress Controller may be installed via Helm:
 
-```
+```pwsh
 # Install nginx-ingress into its own namespace
 helm install --namespace nginx-ingress nginx-ingress
 ```
 
 Alternatively, a local port may be forwarded to the pod:
 
-```
+```pwsh
 # Forward local port to the Kubernetes deployment
 kubectl port-forward --namespace=ffc-demo deployment/ffc-demo-payment-web 3000:3000
 ```
@@ -132,7 +132,7 @@ Controller may be installed via Helm.
 
 Alternatively, a local port may be forwarded to the pod:
 
-```
+```pwsh
 # Forward local port to the Kubernetes deployment
 kubectl port-forward --namespace=ffc-demo deployment/ffc-demo-web 3000:3000
 ```
@@ -152,12 +152,13 @@ Liveness: `/healthz`
 ## Build Pipeline
 
 The [CI Pipeline](.azuredevops/build.yaml) does the following
+
 - The application is validated
 - The application is tested
 - The application is built into deployable artifacts (images and helm charts)
 - Pushing the artifacts to Azure Container Registry
 
-A detailed description on the build pipeline [wiki page](https://github.com/DEFRA/ado-pipeline-common/blob/main/docs/AppBuildAndDeploy.md) 
+A detailed description on the build pipeline [wiki page](https://github.com/DEFRA/ado-pipeline-common/blob/main/docs/AppBuildAndDeploy.md)
 
 ## Licence
 
