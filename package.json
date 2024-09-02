@@ -42,7 +42,7 @@
     "@hapi/hoek": "11.0.2",
     "@hapi/inert": "7.1.0",
     "@hapi/vision": "7.0.3",
-    "@hapi/wreck": "18.0.1",
+    "@hapi/wreck": "18.1.0",
     "@hapi/yar": "11.0.1",
     "applicationinsights": "2.7.3",
     "govuk-frontend": "4.7.0",
